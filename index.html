@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BridgeLux | Industrial Solid Waste Resource Recovery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;600&family=Inter:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; 
+            color: #fff;
+            line-height: 1.7;
+            scroll-behavior: smooth;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .spacex-font {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.04em;   /* ← 关键 */
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1.05;        /* ← 关键 */
+}
+        
+        .hero-bg {
+            height: 100vh;
+            background:
+        linear-gradient(90deg, rgba(0,0,0,0.82), rgba(0,0,0,0.38), rgba(0,0,0,0.08)),
+        url('./public/homePhoto.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .content-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        
+        .solution-card {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.4s ease;
+        }
+        .solution-card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-3px);
+        }
+
+        .tech-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            filter: brightness(0.7);
+            transition: all 0.8s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .tech-img:hover { filter: brightness(1); border-color: #fff; }
+
+        .location-tag {
+            font-size: 0.7rem;
+            padding: 2px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            margin: 3px;
+            display: inline-block;
+            color: #888;
+        }
+
+        nav { background: rgba(0, 0, 0, 0.9); }
+        .timeline-dot {
+    position: absolute;
+    left: -7px;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    background: #22c55e;
+    border-radius: 999px;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.8);
+}
+
+.timeline-item:hover h4 {
+    color: #22c55e;
+    transition: color 0.3s ease;
+}
+.section-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.05;
+}
+
+.section-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #22c55e;
+}
+
+.body-text {
+    font-family: 'Inter', sans-serif;
+    color: #a1a1aa;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+#timeline {
+    font-family: 'Inter', sans-serif;
+}
+
+#timeline h2,
+#timeline h3,
+#timeline h4 {
+    font-family: 'Oswald', sans-serif;
+}
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 40px;
+    max-width: 900px;
+    margin: 60px auto 0;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .partners-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .partners-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.partners-grid span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    transition: all 0.3s ease;
+}
+
+.partners-grid span:hover {
+    color: #ffffff;
+}
+
+.milestone-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+}
+
+.milestone-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+}
+
+.milestone-slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.85), rgba(0,0,0,0.45), rgba(0,0,0,0.15));
+}
+
+.milestone-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.milestone-content {
+    position: relative;
+    z-index: 2;
+    max-width: 620px;
+    padding-left: 7vw;
+    padding-top: 28vh;
+}
+
+.milestone-year {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.35em;
+    color: #22c55e;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.milestone-content h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 4.8rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 300;
+    margin-bottom: 28px;
+}
+
+.milestone-content p {
+    color: rgba(255,255,255,0.82);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.milestone-arrow {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 72px;
+    color: white;
+    opacity: 0.8;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.milestone-arrow.left {
+    left: 40px;
+}
+
+.milestone-arrow.right {
+    right: 40px;
+}
+
+.milestone-dots {
+    position: absolute;
+    z-index: 3;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.45);
+    border: none;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: #ffffff;
+}
+
+.title-main {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 4.8rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 300;
+}
+
+.project-showcase {
+    max-width: 1200px;
+    margin: 80px auto 120px;
+}
+
+.project-track {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+}
+
+.project-card {
+    flex: 1;               /* ⭐ 自动均分 */
+    max-width: 300px;      /* 控制最大宽度 */
+}
+
+.project-card img {
+    width: 100%;
+    height: 230px; /* 原来260 → 缩小 */
+    object-fit: cover;
+    border-radius: 16px; /* ✅ 圆角 */
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.04);
+}
+
+.project-info {
+    padding-top: 14px;
+}
+
+.project-info h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem; /* 缩小 */
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 300;
+    margin-bottom: 6px;
+}
+
+.project-info p {
+    font-size: 0.85rem; /* 缩小 */
+    color: rgba(255,255,255,0.6);
+    line-height: 1.4;
+}
+
+.project-info strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.tech-scroll {
+    display: flex;
+    gap: 28px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 24px;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+    scroll-behavior: smooth;
+}
+
+.tech-process-card {
+    flex: 0 0 420px;
+    scroll-snap-align: start;
+}
+
+.tech-process-card img {
+    width: 420px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 18px;
+    filter: brightness(0.82);
+    transition: all 0.45s ease;
+}
+
+.tech-process-card:hover img {
+    filter: brightness(1);
+    transform: scale(1.02);
+}
+
+.tech-process-text {
+    text-align: left;
+    padding-top: 20px;
+}
+
+.tech-process-text h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.45rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 300;
+    margin-bottom: 12px;
+}
+
+.tech-process-text p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.62);
+    font-weight: 300;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 px-8 py-6 flex items-center backdrop-blur-lg border-b border-white/5">
+    <a href="/" class="flex items-center">
+        <img src="./src/logo.jpg" alt="BridgeLux Logo" class="h-8 md:h-10 w-auto object-contain">
+    </a>
+
+    <div class="hidden lg:flex ml-auto mr-10 space-x-10 text-[10px] font-bold uppercase tracking-[0.2em]">
+        <a href="#about" id="nav-about" class="hover:text-gray-400 transition">About</a>
+        <a href="#solutions" id="nav-solutions" class="hover:text-gray-400 transition">Solutions</a>
+        <a href="#technology" id="nav-tech" class="hover:text-gray-400 transition">Technology</a>
+        <a href="#timeline" id="nav-timeline" class="hover:text-gray-400 transition">Milestones</a>
+        <a href="#projects" id="nav-projects" class="hover:text-gray-400 transition">Projects</a>
+        <a href="news.html" id="nav-news" class="hover:text-gray-400 transition">News</a>
+    </div>
+
+    <button id="toggle-lang" class="text-xs font-bold tracking-widest text-white border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition duration-300 rounded uppercase">
+        繁體中文
+    </button>
+</nav>
+
+    <header class="hero-bg">
+        <div class="w-full px-[8vw] text-left">
+            <h2 id="hero-title" class="text-[10px] font-bold uppercase tracking-[0.6em] mb-6 text-white/70">
+                Pioneering Circular Systems
+            </h2>
+            
+            <h1 id="hero-heading" class="title-main mb-6 max-w-[900px]">
+                Transforming Solid Waste <br>
+                <span class="text-green-500">into Sustainable Value</span>
+            </h1>
+            <p id="hero-description"
+   class="max-w-[900px] text-sm md:text-base text-gray-300 font-light leading-relaxed whitespace-nowrap">
+    Waste-to-energy slag treatment and resource recovery delivering compliant, scalable solutions across China and Southeast Asia.
+</p>
+        </div>
+
+        <div id="scroll-text" class="absolute bottom-10 left-[8vw] text-[10px] tracking-[0.4em] text-white/40 uppercase">
+            Scroll to explore
+        </div>
+    </header>
+
+    <section id="about" class="py-32 reveal">
+        <div class="content-container">
+            <div class="grid lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-5">
+                    <h2 id="about-title" class="text-xs font-bold uppercase tracking-[0.4em] text-gray-500 mb-6">About Us</h2>
+                    <h3 id="about-heading" class="title-main">Professional <br>Resource Recovery <br>Enterprise</h3>
+                </div>
+                <div class="lg:col-span-7 text-gray-400 space-y-8 font-light leading-relaxed border-l border-white/10 pl-10">
+                    <p id="about-text">We are a professional solid-waste resource recovery enterprise dedicated to the treatment and reutilization of incineration slag and industrial solid waste. Our business spans project development, system design, facility construction, and long-term operation, with solutions tailored to regional waste characteristics and regulatory requirements.</p>
+                    <p id="about-text-2">Our work is grounded in the core principles of reduction, harmless treatment, and resource utilization. By applying proven engineering methods and continuously optimizing process systems, we convert solid-waste residues into environmentally compliant construction materials and industrial resources, while ensuring strict control of emissions, wastewater, and secondary pollution.</p>
+                    <p id="about-text-3">With operating projects in multiple provinces in China and in Vietnam, we have accumulated extensive experience in managing complex waste streams, including high-moisture and high-impurity materials common in urban and industrial environments. We position ourselves as a long-term infrastructure partner rather than a short-term service provider, focusing on stability, compliance, and sustainable value creation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="py-32 bg-[#0a0a0a] reveal">
+        <div class="content-container">
+            <h2 id="solutions-heading" class="title-main mb-20 text-center">Core Solutions</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="solution-card p-10">
+                    <h4 id="solution-1-title" class="text-xl font-bold mb-4 uppercase text-white">WTE Slag Resource Recovery</h4>
+                    <p id="solution-1-text" class="text-sm text-gray-400">Through multi-stage crushing, screening, separation, and purification processes.</p>
+                </div>
+                <div class="solution-card p-10">
+                    <h4 id="solution-2-title" class="text-xl font-bold mb-4 uppercase text-white">Industrial Solid Waste Utilization</h4>
+                    <p id="solution-2-text" class="text-sm text-gray-400">Tailored treatment for biomass slag and coal-derived residues.</p>
+                </div>
+                <div class="solution-card p-10">
+                    <h4 id="solution-3-title" class="text-xl font-bold mb-4 uppercase text-white">Environmental Control Systems</h4>
+                    <p id="solution-3-text" class="text-sm text-gray-400">Fully enclosed material handling, odor control, and dust suppression systems.</p>
+                </div>
+                <div class="solution-card p-10">
+                    <h4 id="solution-4-title" class="text-xl font-bold mb-4 uppercase text-white">Resource-Based End Products</h4>
+                    <p id="solution-4-text" class="text-sm text-gray-400">Stable, quality-controlled products suitable for use in green building materials.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="technology" class="py-32 reveal">
+        <div class="content-container">
+            <div class="text-center mb-20">
+                <h2 id="technology-heading" class="title-main">Technology & Process</h2>
+            </div>
+    
+            <div class="tech-scroll">
+                <div class="tech-process-card">
+                    <img src="./src/tech-process-1.jpg" alt="Raw Material Receiving and Classification">
+                    <div class="tech-process-text">
+                        <h4 id="tech-process-1-title">Raw Material Receiving & Classification</h4>
+                        <p id="tech-process-1-text">Incoming materials are received through enclosed feeding systems...</p>
+                    </div>
+                </div>
+    
+                <div class="tech-process-card">
+                    <img src="./src/tech-process-2.jpg" alt="Multi-stage Crushing System">
+                    <div class="tech-process-text">
+                        <h4 id="tech-process-2-title">Multi-stage Crushing System</h4>
+                        <p id="tech-process-2-text">The slag is processed through primary and secondary crushing, followed by fine separation, allowing materials of different particle sizes to be prepared for efficient downstream recovery and purification.</p>
+                    </div>
+                </div>
+    
+                <div class="tech-process-card">
+                    <img src="./src/tech-process-3.jpg" alt="High-efficiency Metal Recovery">
+                    <div class="tech-process-text">
+                        <h4 id="tech-process-3-title">High-efficiency Metal Recovery</h4>
+                        <p id="tech-process-3-text">Magnetic separation is used to recover iron, while eddy current separation further extracts valuable non-ferrous metals such as copper and aluminum from the processed material stream.</p>
+                    </div>
+                </div>
+    
+                <div class="tech-process-card">
+                    <img src="./src/tech-process-4.jpg" alt="Wet Purification System">
+                    <div class="tech-process-text">
+                        <h4 id="tech-process-4-title">Wet Purification System</h4>
+                        <p id="tech-process-4-text">Gravity separation and dewatering treatment are applied to improve material cleanliness, while internal water circulation reduces wastewater discharge and supports stable environmental compliance.</p>
+                    </div>
+                </div>
+    
+                <div class="tech-process-card">
+                    <img src="./src/tech-process-5.jpg" alt="Recycled Material Production">
+                    <div class="tech-process-text">
+                        <h4 id="tech-process-5-title">Recycled Material Production</h4>
+                        <p id="tech-process-5-text">Purified materials are mixed, molded, cured, and standardized into recycled outputs suitable for construction, infrastructure, and other compliant resource-based applications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline" class="milestone-section">
+        <div class="milestone-slide active" style="background-image: url('./public/milestone-2022.jpg');">
+            <div class="milestone-content">
+                <p class="milestone-year">2022</p>
+                <h2 id="milestone-1-title">Focus on Bottom Ash Resource Recovery</h2>
+                <p id="milestone-1-text">Early R&amp;D focused on MSW incineration bottom ash treatment. Core processes including crushing, magnetic separation, eddy current separation, and wet gravity separation established the foundation of the separation system.</p>
+            </div>
+        </div>
+    
+        <div class="milestone-slide" style="background-image: url('./public/milestone-2024.jpg');">
+            <div class="milestone-content">
+                <p class="milestone-year">2023–2024</p>
+                <h2 id="milestone-2-title">From Technology to Integrated Engineering</h2>
+                <p id="milestone-2-text">Building on mature technologies, we integrated equipment systems, process design, environmental control, and operations management.</p>
+            </div>
+        </div>
+    
+        <div class="milestone-slide" style="background-image: url('./public/milestone-2025.jpg');">
+            <div class="milestone-content">
+                <p class="milestone-year">2025</p>
+                <h2 id="milestone-3-title">Multi-Regional Project Deployment</h2>
+                <p id="milestone-3-text">We expanded projects across multiple regions in China and Southeast Asia, adapting to different climates, waste compositions, and regulatory environments.</p>
+            </div>
+        </div>
+    
+        <div class="milestone-slide" style="background-image: url('./public/milestone-2026.jpg');">
+            <div class="milestone-content">
+                <p class="milestone-year">2026</p>
+                <h2 id="milestone-4-title">Circular Resource Platform Development</h2>
+                <p id="milestone-4-text">We are upgrading toward an international circular resource platform, transforming solid waste management into long-term asset operations.</p>
+            </div>
+        </div>
+    
+        <button class="milestone-arrow left" onclick="changeMilestone(-1)">‹</button>
+        <button class="milestone-arrow right" onclick="changeMilestone(1)">›</button>
+    
+        <div class="milestone-dots">
+            <button class="dot active" onclick="goMilestone(0)"></button>
+            <button class="dot" onclick="goMilestone(1)"></button>
+            <button class="dot" onclick="goMilestone(2)"></button>
+            <button class="dot" onclick="goMilestone(3)"></button>
+        </div>
+    </section>
+
+    <section id="projects" class="py-32 bg-[#0a0a0a] reveal">
+        <div class="content-container">
+            <h2 id="projects-heading" class="title-main mb-20 text-center">Global Footprint</h2>
+            <div class="grid md:grid-cols-2 gap-12 text-left mb-24">
+                <div class="p-10 border border-white/5 bg-[#020a02] hover:border-white/30 transition">
+                    <h4 id="proj-1-title" class="text-2xl font-bold mb-4 uppercase">Vietnam</h4>
+                    <p id="project-1-description" class="text-gray-400 text-sm mb-6 leading-relaxed">Supporting major municipal waste-to-energy facilities in Ho Chi Minh City.</p>
+                    <div class="flex flex-wrap"><span class="location-tag" data-city="hoChiMinhCity">Ho Chi Minh City</span></div>
+                </div>
+                <div class="p-10 border border-white/5 bg-[#020a02] hover:border-white/30 transition">
+                    <h4 id="proj-2-title" class="text-2xl font-bold mb-4 uppercase">Mainland China</h4>
+                    <p id="project-2-description" class="text-gray-400 text-sm mb-6 leading-relaxed">Extensive operations across urban and regional waste streams.</p>
+                    <div class="flex flex-wrap">
+                        <span class="location-tag" data-city="shandong">Shandong</span>
+                        <span class="location-tag" data-city="guizhou">Guizhou</span>
+                        <span class="location-tag" data-city="jilin">Jilin</span>
+                        <span class="location-tag" data-city="hebei">Hebei</span>
+                        <span class="location-tag" data-city="guangxi">Guangxi</span>
+                        <span class="location-tag" data-city="henan">Henan</span>
+                        <span class="location-tag" data-city="hunan">Hunan</span>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="project-showcase">
+                <div class="project-track">
+                    <div class="project-card">
+                        <img src="./public/projects/project-1.jpg" alt="Tam Sinh Nghia Slag Project">
+                        <div class="project-info">
+                            <h4 id="showcase-1-title">TAM SINH NGHIA SLAG PROJECT</h4>
+                            <p id="showcase-1-location"><strong>Ho Chi Minh City, Vietnam</strong></p>
+                            <p id="showcase-1-scale">2600 tons/d solid waste treatment</p>
+                            <p id="showcase-1-area">Cover 20 Hectares</p>
+                            <p id="showcase-1-phase">With Phase I covering 6 Hectares</p>
+                        </div>
+                    </div>
+            
+                    <div class="project-card">
+                        <img src="./public/projects/project-2.jpg" alt="Viestar Lemna Slag Project">
+                        <div class="project-info">
+                            <h4 id="showcase-2-title">VIESTAR LEMNA SLAG PROJECT</h4>
+                            <p id="showcase-2-location"><strong>Ho Chi Minh City, Vietnam</strong></p>
+                            <p id="showcase-2-scale">2600 tons/d solid waste treatment</p>
+                            <p id="showcase-2-area">Cover 30 Hectares</p>
+                        </div>
+                    </div>
+            
+                    <div class="project-card">
+                        <img src="./public/projects/project-3.jpg" alt="Xiamei Slag Project">
+                        <div class="project-info">
+                            <h4 id="showcase-3-title">XIAMEI SLAG PROJECT</h4>
+                            <p id="showcase-3-location"><strong>Tangshan, Hebei, China</strong></p>
+                            <p id="showcase-3-scale">850 tons/d solid waste treatment</p>
+                            <p id="showcase-3-area">Cover 1.5 Hectares</p>
+                        </div>
+                    </div>
+            
+                    <div class="project-card">
+                        <img src="./public/projects/project-4.jpg" alt="Handerson Slag Project">
+                        <div class="project-info">
+                            <h4 id="showcase-4-title">HANDERSON SLAG PROJECT</h4>
+                            <p id="showcase-4-location"><strong>Qixia, Shandong, China</strong></p>
+                            <p id="showcase-4-scale">400 tons/d solid waste treatment</p>
+                            <p id="showcase-4-area">Cover 1.3 Hectares</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <h4 id="partners-heading" class="text-[10px] font-bold uppercase tracking-[0.5em] text-gray-600 mb-12 text-center">Strategic Partners</h4>
+            <div class="partners-grid">
+
+                <span>VIETSTAR</span>
+                <span>BCG ENERGY</span>
+                <span>SUS ENVIRONMENT</span>
+                <span>EVERBRIGHT ENVIRONMENT</span>
+            
+                <span>SANFENG ENVIRONMENT</span>
+                <span>SHENGYUN</span>
+                <span>GEE</span>
+                <span>WESTERN POWER</span>
+            
+                <span>CHINA TIANYING</span>
+                <span>DAJI HOLDING</span>
+                <span>TUS-SOUND</span>
+                <span>ZHENENG JINJIANG</span>
+            
+                <span>WANNENG ENVIRONMENT</span>
+                <span>POWERCHINA</span>
+            
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-[#020a02] border-t border-white/5 text-center">
+        <div class="text-[10px] text-gray-800 uppercase tracking-widest">
+            &copy; 2026 BridgeLux. All rights reserved.
+        </div>
+    </footer>
+
+<script>
+    const langData = {
+        en: {
+            navAbout: "About", navSolutions: "Solutions", navTech: "Technology", navProjects: "Projects",
+            heroTitle: "Pioneering Circular Systems",
+            heroHeading: "Transforming Solid Waste <br><span class='text-green-500 mt-8'>into Sustainable Value</span>",
+            heroDescription: "Waste-to-energy slag treatment and resource recovery delivering compliant, scalable solutions across China and Southeast Asia.",
+            aboutTitle: "About Us",
+            aboutHeading: "Professional <br>Resource Recovery <br>Enterprise",
+            aboutText: "We are a professional solid-waste resource recovery enterprise dedicated to the treatment and reutilization of incineration slag and industrial solid waste. Our business spans project development, system design, facility construction, and long-term operation, with solutions tailored to regional waste characteristics and regulatory requirements.",
+            aboutText2: "Our work is grounded in the core principles of reduction, harmless treatment, and resource utilization. By applying proven engineering methods and continuously optimizing process systems, we convert solid-waste residues into environmentally compliant construction materials and industrial resources, while ensuring strict control of emissions, wastewater, and secondary pollution.",
+            aboutText3:"With operating projects in multiple provinces in China and in Vietnam, we have accumulated extensive experience in managing complex waste streams, including high-moisture and high-impurity materials common in urban and industrial environments. We position ourselves as a long-term infrastructure partner rather than a short-term service provider, focusing on stability, compliance, and sustainable value creation.",
+            solutionsHeading: "Core Solutions",
+            solution1Title: "WTE Slag Resource Recovery",
+            solution1Text: "Through multi-stage crushing, screening, separation, and purification processes, incineration slag is transformed into clean aggregates and reusable materials.",
+            solution2Title: "Industrial Solid Waste Utilization",
+            solution2Text: "Tailored treatment for biomass slag and coal-derived residues, adapted to specific material composition and local environmental standards.",
+            solution3Title: "Environmental Control Systems",
+            solution3Text: "Fully enclosed material handling, odor control, and dust suppression systems ensuring zero wastewater discharge and minimal fugitive emissions.",
+            solution4Title: "Resource-Based End Products",
+            solution4Text: "Stable, quality-controlled products suitable for use in green building materials, road base layers, and municipal infrastructure projects.",
+            technologyHeading: "Technology & Process",
+            tech1Title: "Pre-treatment",
+            tech1Description: "Our technology framework is built around a modular, end-to-end processing system that covers pre-treatment, separation, purification, and product formation. Incineration slag first undergoes controlled aging and conditioning, followed by multi-level crushing and screening to achieve particle size differentiation.",
+            tech2Title: "Advanced Separation",
+            tech2Description: "Advanced physical separation techniques—including magnetic separation, eddy current separation, and gravity-based sorting—are applied to recover metals and remove impurities. Fine tailings are further purified to meet material reuse standards, while recycled aggregates are processed for consistent quality and performance.",
+            tech3Title: "Eco-Integration",
+            tech3Description: "All facilities incorporate integrated environmental protection systems, including sealed conveyors, odor treatment units, and internal water recycling. Process designs are optimized for local conditions, such as high humidity, high organic content, or plateau climates, ensuring stable operation and compliance with applicable environmental regulations.",
+            projectsHeading: "Global Footprint",
+            proj1Title: "Vietnam",
+            project1Description: "Supporting major municipal waste-to-energy facilities in Ho Chi Minh City by providing dedicated slag resource recovery lines, enabling the transition from simple disposal to systematic reuse.",
+            proj2Title: "Mainland China",
+            project2Description: "Extensive operations across urban and regional waste streams. We have accumulated deep experience in managing complex, high-moisture materials common in diverse climates from Jilin to Guangxi.",
+            partnersHeading: "Strategic Partners",
+            navTimeline: "Milestones",
+            navNews: "News",
+
+            scrollText: "Scroll to explore",
+
+            techProcess1Title: "Raw Material Receiving & Classification",
+            techProcess1Text: "Incoming materials are received through enclosed feeding systems, then screened and sorted to remove oversized impurities and recover primary iron components before entering the main treatment process.",
+            techProcess2Title: "Multi-stage Crushing System",
+            techProcess2Text: "The slag is processed through primary and secondary crushing, followed by fine separation, allowing materials of different particle sizes to be prepared for efficient downstream recovery and purification.",
+            techProcess3Title: "High-efficiency Metal Recovery",
+            techProcess3Text: "Magnetic separation is used to recover iron, while eddy current separation further extracts valuable non-ferrous metals such as copper and aluminum from the processed material stream.",
+            techProcess4Title: "Wet Purification System",
+            techProcess4Text: "Gravity separation and dewatering treatment are applied to improve material cleanliness, while internal water circulation reduces wastewater discharge and supports stable environmental compliance.",
+            techProcess5Title: "Recycled Material Production",
+            techProcess5Text: "Purified materials are mixed, molded, cured, and standardized into recycled outputs suitable for construction, infrastructure, and other compliant resource-based applications.",
+
+            milestone1Title: "Focus on Bottom Ash Resource Recovery",
+            milestone1Text: "Early R&D focused on MSW incineration bottom ash treatment. Core processes including crushing, magnetic separation, eddy current separation, and wet gravity separation established the foundation of the separation system.",
+            milestone2Title: "From Technology to Integrated Engineering",
+            milestone2Text: "Building on mature technologies, we integrated equipment systems, process design, environmental control, and operations management.",
+            milestone3Title: "Multi-Regional Project Deployment",
+            milestone3Text: "We expanded projects across multiple regions in China and Southeast Asia, adapting to different climates, waste compositions, and regulatory environments.",
+            milestone4Title: "Circular Resource Platform Development",
+            milestone4Text: "We are upgrading toward an international circular resource platform, transforming solid waste management into long-term asset operations.",
+
+            showcase1Title: "TAM SINH NGHIA SLAG PROJECT",
+            showcase1Location: "<strong>Ho Chi Minh City, Vietnam</strong>",
+            showcase1Scale: "2600 tons/d solid waste treatment",
+            showcase1Area: "Cover 20 Hectares",
+            showcase1Phase: "With Phase I covering 6 Hectares",
+
+            showcase2Title: "VIESTAR LEMNA SLAG PROJECT",
+            showcase2Location: "<strong>Ho Chi Minh City, Vietnam</strong>",
+            showcase2Scale: "2600 tons/d solid waste treatment",
+            showcase2Area: "Cover 30 Hectares",
+
+            showcase3Title: "XIAMEI SLAG PROJECT",
+            showcase3Location: "<strong>Tangshan, Hebei, China</strong>",
+            showcase3Scale: "850 tons/d solid waste treatment",
+            showcase3Area: "Cover 1.5 Hectares",
+
+            showcase4Title: "HANDERSON SLAG PROJECT",
+            showcase4Location: "<strong>Qixia, Shandong, China</strong>",
+            showcase4Scale: "400 tons/d solid waste treatment",
+            showcase4Area: "Cover 1.3 Hectares",
+
+            locationTags: {
+                hoChiMinhCity: "Ho Chi Minh City", shandong: "Shandong", guizhou: "Guizhou", jilin: "Jilin",
+                hebei: "Hebei", guangxi: "Guangxi", henan: "Henan", hunan: "Hunan"
+            }
+        },
+        zh: {
+            navAbout: "關於我們", navSolutions: "解決方案", navTech: "技術體系", navProjects: "項目實績",
+            heroTitle: "引領循環系統創新",
+            heroHeading: "廢棄為源<br><span class='text-green-500 mt-8'>價值新生</span>",
+            heroDescription: "專注於垃圾焚燒發電爐渣處理與資源化回收，為中國及東南亞提供符合法規、具備可擴展性的整體解決方案。",
+            aboutTitle: "關於我們",
+            aboutHeading: "專業資源化<br>回收企業",
+            aboutText: "我們是一家專業的固體廢棄物資源化企業，專注於垃圾焚燒爐渣及工業固體廢棄物的處理與再利用。業務涵蓋項目開發、系統設計、設施建設及長期運營管理，並依據不同地區的廢棄物特性與監管要求，提供具備高度適配性的整體解決方案。",
+            aboutText2: "我們的工作以「減量化、無害化、資源化」為核心原則，透過成熟可靠的工程技術與持續優化的工藝系統，將固體廢棄物殘渣轉化為符合法規要求的建築材料與工業資源，同時對廢氣、廢水及二次污染實施嚴格管控，確保環境安全與合規運行。",
+            aboutText3:"目前，我們在中國多個省份及越南均有在營項目，累積了豐富的複雜廢物流管理經驗，特別是在處理高含水率、高雜質的城市及工業固體廢棄物方面具備成熟能力。我們將自身定位為長期的基礎設施合作夥伴，而非短期服務提供者，專注於運營穩定性、合規性以及可持續價值的持續創造。",
+            solutionsHeading: "核心解決方案",
+            solution1Title: "垃圾焚燒發電爐渣資源化回收",
+            solution1Text: "透過多階段破碎、篩分、分選及淨化處理工藝，將焚燒爐渣轉化為潔淨骨材與可再利用材料，同時高效回收其中的鐵金屬與有色金屬資源。",
+            solution2Title: "工業固體廢棄物資源化利用",
+            solution2Text: "針對生質爐渣及燃煤衍生殘渣，依其具體物理與化學組成特性，並結合當地環境監管標準，提供定制化的處理與利用方案。",
+            solution3Title: "環境控制系統",
+            solution3Text: "採用全封閉式物料輸送系統，結合異味控制與粉塵抑制技術，實現零廢水外排，並將無組織排放降至最低，確保整體運行符合嚴格的環保要求。",
+            solution4Title: "資源化終端產品",
+            solution4Text: "所產出的資源化產品具備穩定品質與可控性能，適用於綠色建築材料、道路基層結構及市政基礎設施等工程應用場景。",
+            technologyHeading: "技術體系與工藝流程",
+            tech1Title: "前處理",
+            tech1Description: "我們的技術體系建立於模組化、端到端的一體化處理架構之上，涵蓋前處理、分選、淨化及產品成型等完整流程。垃圾焚燒爐渣首先經過受控老化與調質處理，隨後透過多級破碎與篩分工序，實現不同粒徑的精細分級。",
+            tech2Title: "高階分選",
+            tech2Description: "在分選階段，系統採用多種先進物理分離技術，包括磁選、渦電流分選及重力分選等，用於高效回收金屬並去除雜質。細顆粒尾料進一步進行深度淨化處理，以滿足材料再利用標準；再生骨材則經過品質穩定化處理，確保其性能一致性與工程適用性。",
+            tech3Title: "生態整合",
+            tech3Description: "所有設施均配置整合式環境保護系統，包括密閉式輸送設備、異味處理裝置及內循環用水系統。工藝設計充分考慮不同區域的實際條件，如高濕度、高有機物含量或高原氣候等因素，確保系統長期穩定運行，並全面符合相關環境法規與監管要求。",
+            projectsHeading: "全球佈局",
+            proj1Title: "越南",
+            project1Description: "我們為胡志明市主要市政垃圾焚燒發電設施提供專用爐渣資源化處理產線，協助項目由單一處置模式升級為系統化、可持續的再利用體系，推動城市固體廢棄物管理向資源化轉型。",
+            proj2Title: "中國大陸",
+            project2Description: "我們在多個城市及區域性固體廢棄物流中開展長期運營，累積了豐富的實踐經驗，特別是在應對不同氣候條件下高含水率、成分複雜廢棄物方面，具備成熟且穩定的處理能力，覆蓋範圍自吉林至廣西。",
+            partnersHeading: "策略夥伴",
+
+            scrollText: "向下探索更多",
+
+            navTimeline: "發展歷程",
+            navNews: "新聞",
+
+            techProcess1Title: "原料接收與分類",
+            techProcess1Text: "進廠物料首先經由封閉式進料系統接收，並透過篩分與分選去除大尺寸雜質，同時回收初級鐵質成分，為後續主體處理流程奠定基礎。",
+            techProcess2Title: "多階段破碎系統",
+            techProcess2Text: "爐渣經由一級與二級破碎處理，並配合精細分選，使不同粒徑的物料能夠進入對應的後端回收與淨化流程。",
+            techProcess3Title: "高效金屬回收",
+            techProcess3Text: "系統透過磁選回收鐵金屬，並進一步使用渦電流分選技術，從處理後的物料流中提取銅、鋁等具價值的有色金屬。",
+            techProcess4Title: "濕法淨化系統",
+            techProcess4Text: "透過重力分選與脫水處理，系統能有效提升物料潔淨度；同時，內部循環水系統可減少廢水外排，支援長期穩定的環保合規運行。",
+            techProcess5Title: "再生材料製備",
+            techProcess5Text: "經淨化後的物料將進一步進行混合、成型、養護與標準化處理，形成可用於建築、市政基礎設施及其他合規場景的再生資源產品。",
+
+            milestone1Title: "聚焦爐渣資源化回收",
+            milestone1Text: "早期研發聚焦於生活垃圾焚燒爐渣處理，並建立以破碎、磁選、渦電流分選與濕法重力分選為核心的基礎分選體系。",
+            milestone2Title: "從技術能力到綜合工程服務",
+            milestone2Text: "在成熟技術基礎上，我們進一步整合設備系統、工藝設計、環境控制與運營管理能力，形成更完整的一體化工程服務體系。",
+            milestone3Title: "多區域項目部署",
+            milestone3Text: "我們將項目拓展至中國多個地區及東南亞市場，並根據不同氣候條件、廢棄物組成與監管環境進行本地化適配。",
+            milestone4Title: "循環資源平台化發展",
+            milestone4Text: "依託工程能力與區域運營經驗，我們正逐步升級為面向國際市場的循環資源平台，推動固體廢棄物管理向長期資產運營轉型。",
+
+            showcase1Title: "心生義爐渣資源化項目",
+            showcase1Location: "<strong>越南 胡志明市</strong>",
+            showcase1Scale: "2600 噸/日 固體廢棄物處理能力",
+            showcase1Area: "佔地 20 公頃",
+            showcase1Phase: "一期佔地 6 公頃",
+
+            showcase2Title: "越南之星爐渣資源化項目",
+            showcase2Location: "<strong>越南 胡志明市</strong>",
+            showcase2Scale: "2600 噸/日 固體廢棄物處理能力",
+            showcase2Area: "佔地 30 公頃",
+
+            showcase3Title: "廈美爐渣資源化項目",
+            showcase3Location: "<strong>中國 河北 唐山</strong>",
+            showcase3Scale: "850 噸/日 固體廢棄物處理能力",
+            showcase3Area: "佔地 1.5 公頃",
+
+            showcase4Title: "漢德森爐渣資源化項目",
+            showcase4Location: "<strong>中國 山東 棲霞</strong>",
+            showcase4Scale: "400 噸/日 固體廢棄物處理能力",
+            showcase4Area: "佔地 1.3 公頃",
+
+            locationTags: {
+                hoChiMinhCity: "胡志明市", shandong: "山東", guizhou: "貴州", jilin: "吉林",
+                hebei: "河北", guangxi: "廣西", henan: "河南", hunan: "湖南"
+            }
+        }
+    };
+
+    let currentLang = 'zh'; 
+
+    function switchLanguage() {
+        currentLang = currentLang === 'en' ? 'zh' : 'en';
+        
+        const ids = [
+            'nav-about', 'nav-solutions', 'nav-tech', 'nav-timeline', 'nav-projects', 'nav-news',
+            'hero-title', 'hero-heading', 'hero-description',
+            'about-title', 'about-heading', 'about-text', 'about-text-2','about-text-3',
+            'solutions-heading', 'solution-1-title', 'solution-1-text',
+            'solution-2-title', 'solution-2-text', 'solution-3-title', 'solution-3-text',
+            'solution-4-title', 'solution-4-text', 'technology-heading',
+
+            'tech-process-1-title', 'tech-process-1-text',
+            'tech-process-2-title', 'tech-process-2-text',
+            'tech-process-3-title', 'tech-process-3-text',
+            'tech-process-4-title', 'tech-process-4-text',
+            'tech-process-5-title', 'tech-process-5-text',
+
+            'milestone-1-title', 'milestone-1-text',
+            'milestone-2-title', 'milestone-2-text',
+            'milestone-3-title', 'milestone-3-text',
+            'milestone-4-title', 'milestone-4-text',
+            
+            
+            'projects-heading', 'proj-1-title', 'project-1-description',
+            'proj-2-title', 'project-2-description',
+
+            'showcase-1-title', 'showcase-1-location', 'showcase-1-scale', 'showcase-1-area', 'showcase-1-phase',
+            'showcase-2-title', 'showcase-2-location', 'showcase-2-scale', 'showcase-2-area',
+            'showcase-3-title', 'showcase-3-location', 'showcase-3-scale', 'showcase-3-area',
+            'showcase-4-title', 'showcase-4-location', 'showcase-4-scale', 'showcase-4-area',
+
+            'partners-heading'
+        ];
+
+        ids.forEach(id => {
+            const el = document.getElementById(id);
+            const apiKey = id.replace(/-([a-z0-9])/g, (g) => g[1].toUpperCase());
+            if (el && langData[currentLang][apiKey]) {
+                el.innerHTML = langData[currentLang][apiKey];
+            }
+        });
+
+        document.querySelectorAll('.location-tag').forEach(tag => {
+            const cityKey = tag.getAttribute('data-city');
+            if (cityKey && langData[currentLang].locationTags[cityKey]) {
+                tag.innerHTML = langData[currentLang].locationTags[cityKey];
+            }
+        });
+
+        document.getElementById("scroll-text").innerHTML = langData[currentLang].scrollText;
+        document.getElementById("toggle-lang").textContent = currentLang === 'en' ? '繁體中文' : 'English';
+        document.body.style.opacity = '1';
+    }
+
+    document.getElementById("toggle-lang").addEventListener("click", switchLanguage);
+    window.addEventListener('DOMContentLoaded', switchLanguage);
+
+    let milestoneIndex = 0;
+
+function showMilestone(index) {
+    const slides = document.querySelectorAll('.milestone-slide');
+    const dots = document.querySelectorAll('.dot');
+
+    milestoneIndex = (index + slides.length) % slides.length;
+
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    slides[milestoneIndex].classList.add('active');
+    dots[milestoneIndex].classList.add('active');
+}
+
+function changeMilestone(direction) {
+    showMilestone(milestoneIndex + direction);
+}
+
+function goMilestone(index) {
+    showMilestone(index);
+}
+const revealItems = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+revealItems.forEach(item => {
+    revealObserver.observe(item);
+});
+</script>
+
+</body>
+</html>

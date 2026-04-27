@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BridgeLux | News</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;600&family=Inter:wght@300;400;600&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+    }
+
+    .title-main {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 300;
+    }
+
+    .news-card {
+      display: grid;
+      grid-template-columns: 42% 58%;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      min-height: 360px;
+    }
+
+    .news-image {
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.75);
+    }
+
+    .news-content {
+      padding: 70px 7vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .news-date {
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 0.28em;
+      color: #22c55e;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 24px;
+    }
+
+    .news-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      line-height: 1.08;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 300;
+      margin-bottom: 26px;
+    }
+
+    .news-text {
+      color: rgba(255,255,255,0.68);
+      line-height: 1.85;
+      max-width: 720px;
+      font-weight: 300;
+    }
+
+    @media (max-width: 768px) {
+      .news-card {
+        grid-template-columns: 1fr;
+      }
+
+      .news-image {
+        height: 260px;
+      }
+
+      .news-content {
+        padding: 48px 28px;
+      }
+    }
+
+    .news-card:hover .news-image {
+    filter: brightness(1);
+}
+  </style>
+</head>
+
+<body>
+
+    <nav class="fixed w-full z-50 px-8 py-6 flex items-center backdrop-blur-lg border-b border-white/5 bg-black/90">
+        <a href="index.html" class="flex items-center">
+            <img src="./src/logo.jpg" alt="BridgeLux Logo" class="h-8 md:h-10 w-auto object-contain">
+        </a>
+    
+        <div class="hidden lg:flex ml-auto mr-10 space-x-10 text-[10px] font-bold uppercase tracking-[0.2em]">
+            <a href="index.html#about" class="hover:text-gray-400 transition">About</a>
+            <a href="index.html#solutions" class="hover:text-gray-400 transition">Solutions</a>
+            <a href="index.html#technology" class="hover:text-gray-400 transition">Technology</a>
+            <a href="#timeline" id="nav-timeline" class="hover:text-gray-400 transition">Milestones</a>
+            <a href="index.html#projects" class="hover:text-gray-400 transition">Projects</a>
+            <a href="news.html" class="hover:text-gray-400 transition">News</a>
+        </div>
+    
+        <button id="toggle-lang" class="text-xs font-bold tracking-widest text-white border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition duration-300 rounded uppercase">
+            繁體中文
+        </button>
+    </nav>
+
+  <header class="pt-48 pb-28 px-8 border-b border-white/10 bg-[#050505]">
+    <div class="max-w-6xl mx-auto">
+      <h1 id="news-heading" class="title-main">News & Industry Updates</h1>
+    </div>
+  </header>
+
+  <main>
+
+    <article class="news-card">
+      <div class="news-image" style="background-image:url('./public/news/news-1.jpg');"></div>
+      <div class="news-content">
+        <p id="news-1-date" class="news-date">June 4, 2025</p>
+        <h2 id="news-1-title" class="news-title">China Energy Engineering Wins Egypt’s First Waste-to-Energy Project</h2>
+        <p id="news-1-text" class="news-text">China Energy Engineering has won the bid for the Abu Rawash Waste-to-Energy Plant Project, Egypt’s first waste-to-energy project. Located in Giza Governorate, the project will have an installed capacity of 30 MW and a daily waste treatment capacity of 1,200 tons. Once completed, the project is expected to reduce waste accumulation, improve the local living environment, and support Egypt’s green and low-carbon transition.</p>
+      </div>
+    </article>
+
+    <article class="news-card">
+      <div class="news-image" style="background-image:url('./public/news/news-2.jpg');"></div>
+      <div class="news-content">
+        <p id="news-2-date" class="news-date">February 24, 2026</p>
+        <h2 id="news-2-title" class="news-title">China Tianying Receives Approval for Phase II Expansion of Hanoi Waste-to-Energy Project</h2>
+        <p id="news-2-text" class="news-text">China Tianying announced that its subsidiary, Hanoi Thien Y Environmental Energy Joint Stock Company, has received approval from the Hanoi People’s Committee for the Phase II expansion of the Soc Son Waste-to-Energy Plant. The expansion will add 1,600 tons per day of waste treatment capacity and 45 MW of power generation capacity.</p>
+      </div>
+    </article>
+
+    <article class="news-card">
+      <div class="news-image" style="background-image:url('./public/news/news-3.jpg');"></div>
+      <div class="news-content">
+        <p id="news-3-date" class="news-date">February 27, 2026</p>
+        <h2 id="news-3-title" class="news-title">Hanoi Waste-to-Energy Expansion Expected to Begin Operation in 2027</h2>
+        <p id="news-3-text" class="news-text">China Tianying stated that the Hanoi Soc Son Waste-to-Energy Project has operated safely and efficiently since its launch in early 2023. The approved expansion will raise the project’s total treatment capacity to 5,600 tons per day, further strengthening the company’s presence in Vietnam and Southeast Asia.</p>
+      </div>
+    </article>
+
+    <article class="news-card">
+      <div class="news-image" style="background-image:url('./public/news/news-4.jpg');"></div>
+      <div class="news-content">
+        <p id="news-4-date" class="news-date">March 10, 2026</p>
+        <h2 id="news-4-title" class="news-title">China Tianying Starts Construction of 1,600-Ton-per-Day Waste-to-Energy Project in Hung Yen, Vietnam</h2>
+        <p id="news-4-text" class="news-text">A new waste-to-energy plant invested by China Tianying has started construction in Hung Yen Province, northern Vietnam. The project covers about 7 hectares and is designed to process 1,600 tons of waste per day while generating 40 MW of electricity.</p>
+      </div>
+    </article>
+
+    <article class="news-card">
+      <div class="news-image" style="background-image:url('./public/news/news-5.jpg');"></div>
+      <div class="news-content">
+        <p id="news-5-date" class="news-date">January 30, 2026</p>
+        <h2 id="news-5-title" class="news-title">Construction Progress Report on Asia’s Largest Integrated Waste Incineration Project</h2>
+        <p id="news-5-text" class="news-text">The Wanxing Environmental Protection Phase III Project in Chengdu is described as Asia’s largest single integrated waste incineration project. The project is designed to process household waste, sludge, kitchen waste, and biogas, forming a multi-source treatment system and reflecting Chengdu’s transformation of former landfill sites into modern environmental infrastructure.</p>
+      </div>
+    </article>
+
+  </main>
+
+  <footer class="py-12 bg-[#020a02] border-t border-white/5 text-center">
+    <div class="text-[10px] text-gray-800 uppercase tracking-widest">
+      &copy; 2026 BridgeLux. All rights reserved.
+    </div>
+  </footer>
+
+<script>
+const langData = {
+  en: {
+    newsHeading: "News & Industry Updates",
+    news1Title: "China Energy Engineering Wins Egypt’s First Waste-to-Energy Project",
+    news1Text: "China Energy Engineering has won the bid for the Abu Rawash Waste-to-Energy Plant Project, Egypt’s first waste-to-energy project. Located in Giza Governorate, the project will have an installed capacity of 30 MW and a daily waste treatment capacity of 1,200 tons. Once completed, the project is expected to reduce waste accumulation, improve the local living environment, and support Egypt’s green and low-carbon transition.",
+
+    news2Title: "China Tianying Receives Approval for Phase II Expansion of Hanoi Waste-to-Energy Project",
+    news2Text: "China Tianying announced that its subsidiary, Hanoi Thien Y Environmental Energy Joint Stock Company, has received approval from the Hanoi People’s Committee for the Phase II expansion of the Soc Son Waste-to-Energy Plant. The expansion will add 1,600 tons per day of waste treatment capacity and 45 MW of power generation capacity.",
+
+    news3Title: "Hanoi Waste-to-Energy Expansion Expected to Begin Operation in 2027",
+    news3Text: "China Tianying stated that the Hanoi Soc Son Waste-to-Energy Project has operated safely and efficiently since its launch in early 2023. The approved expansion will raise the project’s total treatment capacity to 5,600 tons per day.",
+
+    news4Title: "China Tianying Starts Construction of 1,600-Ton-per-Day Waste-to-Energy Project in Hung Yen, Vietnam",
+    news4Text: "A new waste-to-energy plant invested by China Tianying has started construction in Hung Yen Province, northern Vietnam. The project covers about 7 hectares and is designed to process 1,600 tons of waste per day while generating 40 MW of electricity.",
+
+    news5Title: "Construction Progress Report on Asia’s Largest Integrated Waste Incineration Project",
+    news5Text: "The Wanxing Environmental Protection Phase III Project in Chengdu is described as Asia’s largest single integrated waste incineration project, covering multiple waste treatment streams including household waste, sludge, and kitchen waste."
+  },
+
+  zh: {
+    newsHeading: "新聞與行業動態",
+    news1Title: "中國能建中標埃及首個垃圾發電項目",
+    news1Text: "中國能建成功中標阿布拉瓦須垃圾發電項目，該項目為埃及首個垃圾發電項目。項目位於吉薩省，裝機容量30兆瓦，日處理垃圾1200噸。建成後將有效減少垃圾堆積，改善當地生活環境，並推動綠色低碳轉型。",
+
+    news2Title: "中國天楹獲批河內垃圾發電項目二期擴建",
+    news2Text: "中國天楹宣布其子公司河內天意環保能源股份公司已獲得河內市人民委員會批准，開展朔山垃圾發電項目二期擴建。擴建後將新增1600噸/日處理能力及45兆瓦發電能力。",
+
+    news3Title: "河內垃圾發電擴建項目預計2027年投運",
+    news3Text: "中國天楹表示，河內朔山垃圾發電項目自2023年投運以來運行穩定。擴建完成後總處理能力將提升至5600噸/日，進一步鞏固其在東南亞市場的佈局。",
+
+    news4Title: "中國天楹越南興安垃圾發電項目開工",
+    news4Text: "中國天楹在越南興安省投資建設的垃圾發電項目正式開工。項目佔地約7公頃，日處理能力1600噸，發電能力40兆瓦。",
+
+    news5Title: "亞洲最大一體化垃圾焚燒項目建設進展",
+    news5Text: "成都萬興環保三期項目被稱為亞洲最大的單體一體化垃圾焚燒項目，涵蓋生活垃圾、污泥及餐廚垃圾等多源處理系統，體現城市環保基礎設施升級方向。"
+  }
+};
+
+let currentLang = 'en';
+
+function switchLang() {
+  currentLang = currentLang === 'en' ? 'zh' : 'en';
+
+  for (let i = 1; i <= 5; i++) {
+    document.getElementById(`news-${i}-title`).innerHTML = langData[currentLang][`news${i}Title`];
+    document.getElementById(`news-${i}-text`).innerHTML = langData[currentLang][`news${i}Text`];
+  }
+  document.getElementById("news-heading").innerHTML = langData[currentLang].newsHeading;
+  document.getElementById("toggle-lang").textContent =
+    currentLang === 'en' ? '繁體中文' : 'English';
+}
+
+document.getElementById("toggle-lang").addEventListener("click", switchLang);
+</script>
+
+</body>
+</html>

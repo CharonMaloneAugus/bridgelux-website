@@ -87,6 +87,95 @@
     .news-card:hover .news-image {
     filter: brightness(1);
 }
+
+@media (max-width: 768px) {
+  nav {
+    padding: 18px 20px !important;
+  }
+
+  nav img {
+    height: 28px !important;
+  }
+
+  nav .hidden {
+    display: none !important;
+  }
+
+  #toggle-lang {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+
+  .hero-bg {
+    height: 100vh;
+    background-attachment: scroll;
+    background-position: center;
+  }
+
+  .hero-bg > div {
+    padding: 0 24px !important;
+    text-align: left;
+  }
+
+  .title-main {
+    font-size: clamp(2.4rem, 13vw, 4rem);
+  }
+
+  #hero-description {
+    white-space: normal !important;
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+
+  #about .grid,
+  #solutions .grid,
+  #projects .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  #about .border-l {
+    border-left: none !important;
+    padding-left: 0 !important;
+  }
+
+  .tech-process-card {
+    flex: 0 0 82vw;
+  }
+
+  .tech-process-card img {
+    width: 82vw;
+    height: 82vw;
+  }
+
+  .project-track {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .project-card {
+    max-width: 100%;
+  }
+
+  .milestone-content {
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-top: 22vh;
+    max-width: 100%;
+  }
+
+  .milestone-arrow {
+    font-size: 48px;
+  }
+
+  .milestone-arrow.left {
+    left: 16px;
+  }
+
+  .milestone-arrow.right {
+    right: 16px;
+  }
+}
   </style>
 </head>
 

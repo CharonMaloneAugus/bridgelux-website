@@ -53,6 +53,12 @@
             transform: translateY(-3px);
         }
 
+        .innovation-card {
+            border: none;
+            background: transparent;
+        }
+        
+
         .tech-img {
             width: 100%;
             height: 300px;
@@ -155,6 +161,19 @@
 .partners-grid span:hover {
     color: #ffffff;
 }
+
+.innovation-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 18px;
+    filter: brightness(0.82);
+    transition: none;
+    border: none;
+    display: block;
+}
+
+
 
 .milestone-section {
     position: relative;
@@ -454,7 +473,9 @@
   .project-card {
     max-width: 100%;
   }
-
+  .innovation-img {
+    height: 220px;
+  }
   .milestone-content {
     padding-left: 28px;
     padding-right: 28px;
@@ -487,6 +508,7 @@
             <a href="#about" id="nav-about" class="hover:text-gray-400 transition">About</a>
             <a href="#solutions" id="nav-solutions" class="hover:text-gray-400 transition">Solutions</a>
             <a href="#technology" id="nav-tech" class="hover:text-gray-400 transition">Technology</a>
+            <a href="#innovation" id="nav-innovation" class="hover:text-gray-400 transition">Innovation</a>
             <a href="#timeline" id="nav-timeline" class="hover:text-gray-400 transition">Milestones</a>
             <a href="#projects" id="nav-projects" class="hover:text-gray-400 transition">Projects</a>
             <a href="news.html" id="nav-news" class="hover:text-gray-400 transition">News</a>
@@ -636,6 +658,39 @@
         </div>
     </section>
 
+    <section id="innovation" class="py-32 bg-[#0a0a0a] reveal">
+        <div class="content-container">
+            <div class="text-center mb-20">
+                <h2 id="innovation-heading" class="title-main">Innovation & Smart Operations</h2>
+                <p id="innovation-subtitle" class="max-w-3xl mx-auto mt-6 text-gray-400 text-sm md:text-base font-light leading-relaxed">
+                    We are developing AI-assisted technologies to improve recovery efficiency, equipment reliability, and long-term operational performance across solid-waste resource recovery facilities.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="innovation-card p-6 md:p-10">
+                    <img src="./src/innovation-metal-sorting.jpg" alt="AI-Enhanced Metal Sorting" class="innovation-img">
+                    <div class="pt-8">
+                        <h4 id="innovation-1-title" class="text-xl font-bold mb-4 uppercase text-white">AI-Enhanced Metal Sorting</h4>
+                        <p id="innovation-1-text" class="text-sm text-gray-400 leading-relaxed">
+                            Camera- and spectral-assisted recognition systems are being developed to identify copper, aluminum, stainless steel, and other valuable materials on conveyor lines, with the potential to link visual detection to air-jet or mechanical sorting modules for higher recovery precision.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="innovation-card p-6 md:p-10">
+                    <img src="./src/innovation-maintenance.jpg" alt="Predictive Maintenance System" class="innovation-img">
+                    <div class="pt-8">
+                        <h4 id="innovation-2-title" class="text-xl font-bold mb-4 uppercase text-white">Predictive Maintenance System</h4>
+                        <p id="innovation-2-text" class="text-sm text-gray-400 leading-relaxed">
+                            Predictive models based on vibration, temperature, current, and operating-load data are being explored for crushers, screens, conveyors, and other key equipment, helping reduce unplanned downtime and improve long-term operating stability.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="timeline" class="milestone-section">
         <div class="milestone-slide active" style="background-image: url('./public/milestone-2022.jpg');">
             <div class="milestone-content">
@@ -664,8 +719,8 @@
         <div class="milestone-slide" style="background-image: url('./public/milestone-2026.jpg');">
             <div class="milestone-content">
                 <p class="milestone-year">2026</p>
-                <h2 id="milestone-4-title">Circular Resource Platform Development</h2>
-                <p id="milestone-4-text">We are upgrading toward an international circular resource platform, transforming solid waste management into long-term asset operations.</p>
+                <h2 id="milestone-4-title">Circular Resource Platform & Fly Ash Expansion</h2>
+                <p id="milestone-4-text">We are upgrading toward an international circular resource platform, expanding from bottom ash resource recovery into integrated post-incineration residue treatment, including fly ash stabilization and leaching-risk control.</p>
             </div>
         </div>
     
@@ -783,7 +838,7 @@
 <script>
     const langData = {
         en: {
-            navAbout: "About", navSolutions: "Solutions", navTech: "Technology", navProjects: "Projects",
+            navAbout: "About", navSolutions: "Solutions", navTech: "Technology", navInnovation: "Innovation", navProjects: "Projects",
             heroTitle: "Pioneering Circular Systems",
             heroHeading: "Transforming Solid Waste <br><span class='text-green-500 mt-8'>into Sustainable Value</span>",
             heroDescription: "Waste-to-energy slag treatment and resource recovery delivering compliant, scalable solutions across China and Southeast Asia.",
@@ -843,14 +898,21 @@
             techProcess6Title: "Fly Ash Stabilization & Leaching Control",
             techProcess6Text: "Fly ash treatment focuses on stabilization, detoxification, and leaching-risk control, helping reduce heavy-metal mobility and supporting compliant downstream disposal or utilization pathways.",
 
+            innovationHeading: "Innovation & Smart Operations",
+            innovationSubtitle: "We are developing AI-assisted technologies to improve recovery efficiency, equipment reliability, and long-term operational performance across solid-waste resource recovery facilities.",
+            innovation1Title: "AI-Enhanced Metal Sorting",
+            innovation1Text: "Camera- and spectral-assisted recognition systems are being developed to identify copper, aluminum, stainless steel, and other valuable materials on conveyor lines, with the potential to link visual detection to air-jet or mechanical sorting modules for higher recovery precision.",
+            innovation2Title: "Predictive Maintenance System",
+            innovation2Text: "Predictive models based on vibration, temperature, current, and operating-load data are being explored for crushers, screens, conveyors, and other key equipment, helping reduce unplanned downtime and improve long-term operating stability.",
+
             milestone1Title: "Focus on Bottom Ash Resource Recovery",
             milestone1Text: "Early R&D focused on MSW incineration bottom ash treatment. Core processes including crushing, magnetic separation, eddy current separation, and wet gravity separation established the foundation of the separation system.",
             milestone2Title: "From Technology to Integrated Engineering",
             milestone2Text: "Building on mature technologies, we integrated equipment systems, process design, environmental control, and operations management.",
             milestone3Title: "Multi-Regional Project Deployment",
             milestone3Text: "We expanded projects across multiple regions in China and Southeast Asia, adapting to different climates, waste compositions, and regulatory environments.",
-            milestone4Title: "Circular Resource Platform Development",
-            milestone4Text: "We are upgrading toward an international circular resource platform, transforming solid waste management into long-term asset operations.",
+            milestone4Title: "Circular Resource Platform & Fly Ash Expansion",
+            milestone4Text: "We are upgrading toward an international circular resource platform, expanding from bottom ash resource recovery into integrated post-incineration residue treatment, including fly ash stabilization and leaching-risk control.",
 
             showcase1Title: "TAM SINH NGHIA SLAG PROJECT",
             showcase1Location: "<strong>Ho Chi Minh City, Vietnam</strong>",
@@ -879,7 +941,7 @@
             }
         },
         zh: {
-            navAbout: "關於我們", navSolutions: "解決方案", navTech: "技術體系", navProjects: "項目實績",
+            navAbout: "關於我們", navSolutions: "解決方案", navTech: "技術體系", navInnovation: "創新研發", navProjects: "項目實績",
             heroTitle: "引領循環系統創新",
             heroHeading: "廢棄為源<br><span class='text-green-500 mt-8'>價值新生</span>",
             heroDescription: "專注於垃圾焚燒發電爐渣處理與資源化回收，為中國及東南亞提供符合法規、具備可擴展性的整體解決方案。",
@@ -940,6 +1002,12 @@
             techProcess6Title: "飛灰穩定化與浸出控制",
             techProcess6Text: "飛灰處理重點包括穩定化、無害化及浸出風險控制，以降低重金屬遷移風險，並銜接合規的後端處置或資源化利用路徑。",
 
+            innovationHeading: "創新研發與智慧運營",
+            innovationSubtitle: "我們正研發 AI 輔助技術，以提升固體廢棄物資源化設施的回收效率、設備可靠性與長期運營表現。",
+            innovation1Title: "AI 增強金屬分選",
+            innovation1Text: "我們正研發結合相機與光譜識別的金屬分選系統，用於在輸送線上識別銅、鋁、不鏽鋼及其他高價值物料，並進一步聯動噴氣或機械分揀模組，以提升回收精度並減少物料流失。",
+            innovation2Title: "預測性維護系統",
+            innovation2Text: "我們正探索基於振動、溫度、電流與運行負載數據的預測性維護模型，應用於破碎機、篩分機、輸送帶及其他關鍵設備，降低非計劃停機風險並提升長期運營穩定性。",
 
             milestone1Title: "聚焦爐渣資源化回收",
             milestone1Text: "早期研發聚焦於生活垃圾焚燒爐渣處理，並建立以破碎、磁選、渦電流分選與濕法重力分選為核心的基礎分選體系。",
@@ -947,8 +1015,8 @@
             milestone2Text: "在成熟技術基礎上，我們進一步整合設備系統、工藝設計、環境控制與運營管理能力，形成更完整的一體化工程服務體系。",
             milestone3Title: "多區域項目部署",
             milestone3Text: "我們將項目拓展至中國多個地區及東南亞市場，並根據不同氣候條件、廢棄物組成與監管環境進行本地化適配。",
-            milestone4Title: "循環資源平台化發展",
-            milestone4Text: "依託工程能力與區域運營經驗，我們正逐步升級為面向國際市場的循環資源平台，推動固體廢棄物管理向長期資產運營轉型。",
+            milestone4Title: "循環資源平台與飛灰業務拓展",
+            milestone4Text: "依託工程能力與區域運營經驗，我們正逐步升級為面向國際市場的循環資源平台，並由爐渣資源化回收拓展至焚燒後端殘餘物綜合治理，包括飛灰穩定化與浸出風險控制。",
 
             showcase1Title: "心生義爐渣資源化項目",
             showcase1Location: "<strong>越南 胡志明市</strong>",
@@ -984,7 +1052,7 @@
         currentLang = currentLang === 'en' ? 'zh' : 'en';
         
         const ids = [
-            'nav-about', 'nav-solutions', 'nav-tech', 'nav-timeline', 'nav-projects', 'nav-news',
+            'nav-about', 'nav-solutions', 'nav-tech', 'nav-innovation', 'nav-timeline', 'nav-projects', 'nav-news',
             'hero-title', 'hero-heading', 'hero-description',
             'about-title', 'about-heading', 'about-text', 'about-text-2','about-text-3',
             
@@ -1001,6 +1069,10 @@
             'tech-process-4-title', 'tech-process-4-text',
             'tech-process-5-title', 'tech-process-5-text',
             'tech-process-6-title', 'tech-process-6-text',
+
+            'innovation-heading', 'innovation-subtitle',
+            'innovation-1-title', 'innovation-1-text',
+            'innovation-2-title', 'innovation-2-text',
 
             'milestone-1-title', 'milestone-1-text',
             'milestone-2-title', 'milestone-2-text',

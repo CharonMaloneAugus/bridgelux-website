@@ -173,7 +173,83 @@
     display: block;
 }
 
+.product-gallery-section {
+    padding: 0 0 24px;
+    background: #000000;
+}
 
+.product-scroll {
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    padding: 0;
+    cursor: grab;
+    scroll-behavior: smooth;
+    user-select: none;
+
+    /* 隐藏底部滚动条 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.product-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.product-scroll:active {
+    cursor: grabbing;
+}
+
+.product-card {
+    flex: 0 0 172px;
+}
+
+.product-card img {
+    width: 172px;
+    height: 172px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+    background: #f3f3f3;
+}
+
+.product-name {
+    margin-top: 14px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.94rem;
+    line-height: 1.2;
+    color: rgba(255,255,255,0.9);
+    font-weight: 300;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .product-gallery-section {
+        padding: 0 0 20px;
+    }
+
+    .product-scroll {
+        gap: 16px;
+    }
+
+    .product-card {
+        flex: 0 0 142px;
+    }
+
+    .product-card img {
+        width: 142px;
+        height: 142px;
+        aspect-ratio: 1 / 1;
+        border-radius: 4px;
+    }
+
+    .product-name {
+        font-size: 0.82rem;
+    }
+}
 
 .milestone-section {
     position: relative;
@@ -348,8 +424,6 @@
     scroll-snap-type: x mandatory;
     padding-bottom: 24px;
     position: relative;
-    mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
     scroll-behavior: smooth;
 }
 
@@ -362,7 +436,7 @@
     width: 420px;
     height: 420px;
     object-fit: cover;
-    border-radius: 18px;
+    border-radius: 0;
     filter: brightness(0.82);
     transition: all 0.45s ease;
 }
@@ -476,6 +550,9 @@
   .innovation-img {
     height: 220px;
   }
+
+  
+
   .milestone-content {
     padding-left: 28px;
     padding-right: 28px;
@@ -600,7 +677,7 @@
         </div>
     </section>
 
-    <section id="technology" class="py-32 reveal">
+    <section id="technology" class="pt-32 pb-10 reveal">
         <div class="content-container">
             <div class="text-center mb-20">
                 <h2 id="technology-heading" class="title-main">Technology & Process</h2>
@@ -658,7 +735,65 @@
         </div>
     </section>
 
-    <section id="innovation" class="py-32 bg-[#0a0a0a] reveal">
+    <section class="product-gallery-section reveal">
+        <div class="content-container">
+            <div class="product-scroll" id="product-scroll">
+    
+                <div class="product-card">
+                    <img src="./src/products/20-70mm 砂.jpg" alt="20–70 mm Recycled Aggregate">
+                    <p id="product-1-name" class="product-name">20–70 MM AGGREGATE</p>
+                </div>
+    
+                <div class="product-card">
+                    <img src="./src/products/gt-70mm 砂.jpg" alt="Above 70 mm Recycled Aggregate">
+                    <p id="product-2-name" class="product-name">&gt;70 MM AGGREGATE</p>
+                </div>
+    
+                <div class="product-card">
+                    <img src="./src/products/10-20mm 砂.jpg" alt="10–20 mm Recycled Aggregate">
+                    <p id="product-3-name" class="product-name">10–20 MM AGGREGATE</p>
+                </div>
+    
+                <div class="product-card">
+                    <img src="./src/products/lt-10mm 砂.jpg" alt="Below 10 mm Recycled Aggregate">
+                    <p id="product-4-name" class="product-name">&lt;10 MM AGGREGATE</p>
+                </div>
+    
+                <div class="product-card">
+                    <img src="./src/products/植草砖.jpg" alt="Grass Paver">
+                    <p id="product-5-name" class="product-name">GRASS PAVER</p>
+                </div>
+    
+                <div class="product-card">
+                    <img src="./src/products/免烧砖.jpg" alt="Unfired Brick">
+                    <p id="product-6-name" class="product-name">UNFIRED BRICK</p>
+                </div>
+    
+                <div class="product-card">
+                    <img src="./src/products/道路砖.jpg" alt="Road Paving Brick">
+                    <p id="product-7-name" class="product-name">ROAD PAVING BRICK</p>
+                </div>
+    
+                <div class="product-card">
+                    <img src="./src/products/植生混凝土.jpg" alt="Vegetation Concrete">
+                    <p id="product-8-name" class="product-name">VEGETATION CONCRETE</p>
+                </div>
+    
+                <div class="product-card">
+                    <img src="./src/products/轻质墙板.jpg" alt="Lightweight Wall Panel">
+                    <p id="product-9-name" class="product-name">LIGHTWEIGHT WALL PANEL</p>
+                </div>
+    
+                <div class="product-card">
+                    <img src="./src/products/再生混凝土.jpg" alt="Recycled Concrete">
+                    <p id="product-10-name" class="product-name">RECYCLED CONCRETE</p>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <section id="innovation" class="pt-12 pb-32 bg-[#0a0a0a] reveal">
         <div class="content-container">
             <div class="text-center mb-20">
                 <h2 id="innovation-heading" class="title-main">Innovation & Smart Operations</h2>
@@ -898,6 +1033,17 @@
             techProcess6Title: "Fly Ash Stabilization & Leaching Control",
             techProcess6Text: "Fly ash treatment focuses on stabilization, detoxification, and leaching-risk control, helping reduce heavy-metal mobility and supporting compliant downstream disposal or utilization pathways.",
 
+            product1Name: "20–70 MM AGGREGATE",
+            product2Name: "&gt;70 MM AGGREGATE",
+            product3Name: "10–20 MM AGGREGATE",
+            product4Name: "&lt;10 MM AGGREGATE",
+            product5Name: "GRASS PAVER",
+            product6Name: "UNFIRED BRICK",
+            product7Name: "ROAD PAVING BRICK",
+            product8Name: "VEGETATION CONCRETE",
+            product9Name: "LIGHTWEIGHT WALL PANEL",
+            product10Name: "RECYCLED CONCRETE",
+
             innovationHeading: "Innovation & Smart Operations",
             innovationSubtitle: "We are developing AI-assisted technologies to improve recovery efficiency, equipment reliability, and long-term operational performance across solid-waste resource recovery facilities.",
             innovation1Title: "AI-Enhanced Metal Sorting",
@@ -1002,6 +1148,17 @@
             techProcess6Title: "飛灰穩定化與浸出控制",
             techProcess6Text: "飛灰處理重點包括穩定化、無害化及浸出風險控制，以降低重金屬遷移風險，並銜接合規的後端處置或資源化利用路徑。",
 
+            product1Name: "20–70 MM 再生骨材",
+            product2Name: "&gt;70 MM 再生骨材",
+            product3Name: "10–20 MM 再生骨材",
+            product4Name: "&lt;10 MM 再生骨材",
+            product5Name: "植草磚",
+            product6Name: "免燒磚",
+            product7Name: "道路磚",
+            product8Name: "植生混凝土",
+            product9Name: "輕質牆板",
+            product10Name: "再生混凝土",
+
             innovationHeading: "創新研發與智慧運營",
             innovationSubtitle: "我們正研發 AI 輔助技術，以提升固體廢棄物資源化設施的回收效率、設備可靠性與長期運營表現。",
             innovation1Title: "AI 增強金屬分選",
@@ -1069,6 +1226,12 @@
             'tech-process-4-title', 'tech-process-4-text',
             'tech-process-5-title', 'tech-process-5-text',
             'tech-process-6-title', 'tech-process-6-text',
+
+            'product-1-name', 'product-2-name',
+            'product-3-name', 'product-4-name',
+            'product-5-name', 'product-6-name',
+            'product-7-name', 'product-8-name',
+            'product-9-name', 'product-10-name',
 
             'innovation-heading', 'innovation-subtitle',
             'innovation-1-title', 'innovation-1-text',
@@ -1151,6 +1314,40 @@ const revealObserver = new IntersectionObserver((entries) => {
 revealItems.forEach(item => {
     revealObserver.observe(item);
 });
+
+    (function () {
+        const slider = document.getElementById('product-scroll');
+        if (!slider) return;
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('dragging');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('dragging');
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('dragging');
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 1.2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    })();
 </script>
 
 </body>

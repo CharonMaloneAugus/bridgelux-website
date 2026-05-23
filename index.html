@@ -149,6 +149,117 @@
     }
 }
 
+.why-section {
+    background: #000;
+}
+
+.why-row {
+    position: relative;
+    min-height: 72vh;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center center;
+    overflow: hidden;
+}
+
+.why-row::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.76) 0%,
+        rgba(0, 0, 0, 0.58) 28%,
+        rgba(0, 0, 0, 0.20) 56%,
+        rgba(0, 0, 0, 0.02) 100%
+    );
+}
+
+.why-row.right::before {
+    background: linear-gradient(
+        270deg,
+        rgba(0, 0, 0, 0.76) 0%,
+        rgba(0, 0, 0, 0.58) 28%,
+        rgba(0, 0, 0, 0.20) 56%,
+        rgba(0, 0, 0, 0.02) 100%
+    );
+}
+
+.why-content {
+    position: relative;
+    z-index: 2;
+    width: min(680px, 46vw);
+    margin-left: clamp(40px, 6vw, 96px);
+    color: #fff;
+}
+
+.why-row.right .why-content {
+    margin-left: auto;
+    margin-right: clamp(40px, 6vw, 96px);
+}
+
+.why-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.8rem, 4.4vw, 4.4rem);
+    line-height: 1.04;
+    font-weight: 300;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    margin: 0 0 22px 0;
+    color: #fff;
+}
+
+.why-text {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.86rem, 0.92vw, 0.98rem);
+    line-height: 1.75;
+    font-weight: 300;
+    color: rgba(255,255,255,0.78);
+    margin: 0;
+    max-width: 560px;
+}
+
+@media (max-width: 768px) {
+    .why-row {
+        min-height: 56vh;
+        background-position: center center;
+    }
+
+    .why-row::before,
+    .why-row.right::before {
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.66) 0%,
+            rgba(0, 0, 0, 0.45) 34%,
+            rgba(0, 0, 0, 0.32) 100%
+        );
+    }
+
+    .why-content,
+    .why-row.right .why-content {
+        width: auto;
+        margin-left: 24px;
+        margin-right: 24px;
+    }
+
+    .why-title {
+        font-family: 'Oswald', sans-serif;
+        font-size: 2.2rem;
+        line-height: 1.04;
+        font-weight: 300;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+
+    .why-text {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.82rem;
+        line-height: 1.65;
+    }
+}
+
 .partners-grid span {
     font-size: 0.85rem;
     font-weight: 600;
@@ -453,12 +564,13 @@
 
 .tech-process-text h4 {
     font-family: 'Oswald', sans-serif;
-    font-size: 1.45rem;
-    line-height: 1.1;
+    font-size: 1.02rem;
+    line-height: 1.15;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.025em;
     font-weight: 300;
     margin-bottom: 12px;
+    white-space: nowrap;
 }
 
 .tech-process-text p {
@@ -536,6 +648,12 @@
   .tech-process-card img {
     width: 82vw;
     height: 82vw;
+  }
+
+  .tech-process-text h4 {
+    font-size: 0.72rem;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
   }
 
   .project-track {
@@ -639,6 +757,44 @@
         </div>
     </section>
 
+    <section id="why-bridgelux" class="why-section reveal">
+        <div class="why-row left" style="background-image: url('./src/why-wte-1.jpg');">
+            <div class="why-content">
+                <h3 id="why-1-title" class="why-title">Redefine Environmental Efficiency</h3>
+                <p id="why-1-text" class="why-text">
+                    BridgeLux helps municipal solid waste incineration plants reduce bottom ash accumulation and landfill dependency by redefining how post-incineration residues are managed, enabling more efficient operations and stronger long-term sustainability.
+                </p>
+            </div>
+        </div>
+    
+        <div class="why-row right" style="background-image: url('./src/why-wte-2.jpg');">
+            <div class="why-content">
+                <h3 id="why-2-title" class="why-title">Unlock Circular Value</h3>
+                <p id="why-2-text" class="why-text">
+                    BridgeLux recovers valuable resources and connects the final stage of the waste-to-energy chain, transforming residual materials into lasting value and advancing a more sustainable future for society and the planet.
+                </p>
+            </div>
+        </div>
+    
+        <div class="why-row left" style="background-image: url('./src/why-wte-3.jpg');">
+            <div class="why-content">
+                <h3 id="why-3-title" class="why-title">Elevate Environmental Integrity</h3>
+                <p id="why-3-text" class="why-text">
+                    Through integrated environmental systems, BridgeLux minimizes dust, wastewater, odor, and secondary pollution risks during operation and establishes a foundation for stable, compliant, and responsible long-term infrastructure performance.
+                </p>
+            </div>
+        </div>
+    
+        <div class="why-row right" style="background-image: url('./src/why-wte-4.jpg');">
+            <div class="why-content">
+                <h3 id="why-4-title" class="why-title">Shape the Circular Future</h3>
+                <p id="why-4-text" class="why-text">
+                    BridgeLux moves beyond traditional waste management by building circular ecosystems where post-incineration residues are transformed into sustainable resources and waste becomes enduring value.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <section id="solutions" class="py-32 bg-[#0a0a0a] reveal">
         <div class="content-container">
             <h2 id="solutions-heading" class="title-main mb-20 text-center">Core Solutions</h2>
@@ -687,7 +843,7 @@
                 <div class="tech-process-card">
                     <img src="./src/tech-process-1.jpg" alt="Raw Material Receiving and Classification">
                     <div class="tech-process-text">
-                        <h4 id="tech-process-1-title">Raw Material Receiving & Classification</h4>
+                        <h4 id="tech-process-1-title">1. Raw Material Receiving & Classification</h4>
                         <p id="tech-process-1-text">Incoming materials are received through enclosed feeding systems...</p>
                     </div>
                 </div>
@@ -695,7 +851,7 @@
                 <div class="tech-process-card">
                     <img src="./src/tech-process-2.jpg" alt="Multi-stage Crushing System">
                     <div class="tech-process-text">
-                        <h4 id="tech-process-2-title">Multi-stage Crushing System</h4>
+                        <h4 id="tech-process-2-title">2. Multi-stage Crushing System</h4>
                         <p id="tech-process-2-text">The slag is processed through primary and secondary crushing, followed by fine separation, allowing materials of different particle sizes to be prepared for efficient downstream recovery and purification.</p>
                     </div>
                 </div>
@@ -703,7 +859,7 @@
                 <div class="tech-process-card">
                     <img src="./src/tech-process-3.jpg" alt="High-efficiency Metal Recovery">
                     <div class="tech-process-text">
-                        <h4 id="tech-process-3-title">High-efficiency Metal Recovery</h4>
+                        <h4 id="tech-process-3-title">3. High-efficiency Metal Recovery</h4>
                         <p id="tech-process-3-text">Magnetic separation is used to recover iron, while eddy current separation further extracts valuable non-ferrous metals such as copper and aluminum from the processed material stream.</p>
                     </div>
                 </div>
@@ -711,7 +867,7 @@
                 <div class="tech-process-card">
                     <img src="./src/tech-process-4.jpg" alt="Wet Purification System">
                     <div class="tech-process-text">
-                        <h4 id="tech-process-4-title">Wet Purification System</h4>
+                        <h4 id="tech-process-4-title">4. Wet Purification System</h4>
                         <p id="tech-process-4-text">Gravity separation and dewatering treatment are applied to improve material cleanliness, while internal water circulation reduces wastewater discharge and supports stable environmental compliance.</p>
                     </div>
                 </div>
@@ -719,7 +875,7 @@
                 <div class="tech-process-card">
                     <img src="./src/tech-process-5.jpg" alt="Recycled Material Production">
                     <div class="tech-process-text">
-                        <h4 id="tech-process-5-title">Recycled Material Production</h4>
+                        <h4 id="tech-process-5-title">5. Recycled Material Production</h4>
                         <p id="tech-process-5-text">Purified materials are mixed, molded, cured, and standardized into recycled outputs suitable for construction, infrastructure, and other compliant resource-based applications.</p>
                     </div>
                 </div>
@@ -727,7 +883,7 @@
                 <div class="tech-process-card">
                     <img src="./src/tech-process-6.jpg" alt="Fly Ash Stabilization and Leaching Control">
                     <div class="tech-process-text">
-                        <h4 id="tech-process-6-title">Fly Ash Stabilization & Leaching Control</h4>
+                        <h4 id="tech-process-6-title">6. Fly Ash Stabilization & Leaching Control</h4>
                         <p id="tech-process-6-text">Fly ash treatment focuses on stabilization, detoxification, and leaching-risk control, helping reduce heavy-metal mobility and supporting compliant downstream disposal or utilization pathways.</p>
                     </div>
                 </div>
@@ -982,7 +1138,16 @@
             aboutText: "We are a professional environmental technology and circular-resource enterprise focused on the integrated treatment and resource recovery of post-incineration residues, including bottom ash, fly ash, industrial solid waste, and legacy waste streams. Our business spans project development, system design, facility construction, equipment integration, and long-term operation.",
             aboutText2: "Our work is grounded in the core principles of reduction, harmless treatment, and resource utilization. Through proven engineering methods and continuously optimized process systems, we transform complex solid-waste residues into compliant recycled materials and industrial resources, while supporting fly ash stabilization, pollution control, wastewater management, and secondary pollution prevention.",
             aboutText3: "With operating projects in multiple provinces in China and in Vietnam, we have accumulated extensive experience in managing high-moisture, high-impurity, and multi-source waste streams. We position ourselves as a long-term infrastructure partner rather than a short-term service provider, focusing on stable operation, regulatory compliance, and sustainable value creation across Asia.",
-            
+
+            why1Title: "Redefine Environmental Efficiency",
+            why1Text: "BridgeLux helps municipal solid waste incineration plants reduce bottom ash accumulation and landfill dependency by redefining how post-incineration residues are managed, enabling more efficient operations and stronger long-term sustainability.",
+            why2Title: "Unlock Circular Value",
+            why2Text: "BridgeLux recovers valuable resources and connects the final stage of the waste-to-energy chain, transforming residual materials into lasting value and advancing a more sustainable future for society and the planet.",
+            why3Title: "Elevate Environmental Integrity",
+            why3Text: "Through integrated environmental systems, BridgeLux minimizes dust, wastewater, odor, and secondary pollution risks during operation and establishes a foundation for stable, compliant, and responsible long-term infrastructure performance.",
+            why4Title: "Shape the Circular Future",
+            why4Text: "BridgeLux moves beyond traditional waste management by building circular ecosystems where post-incineration residues are transformed into sustainable resources and waste becomes enduring value.",
+
             solutionsHeading: "Core Solutions",
             solution1Title: "WTE Bottom Ash Resource Recovery",
             solution1Text: "Through multi-stage crushing, screening, magnetic separation, eddy current separation, and wet purification, incineration bottom ash is transformed into recycled aggregates and reusable materials.",
@@ -1020,17 +1185,17 @@
 
             scrollText: "Scroll to explore",
 
-            techProcess1Title: "Raw Material Receiving & Classification",
+            techProcess1Title: "1. Raw Material Receiving & Classification",
             techProcess1Text: "Incoming materials are received through enclosed feeding systems, then screened and sorted to remove oversized impurities and recover primary iron components before entering the main treatment process.",
-            techProcess2Title: "Multi-stage Crushing System",
+            techProcess2Title: "2. Multi-stage Crushing System",
             techProcess2Text: "The slag is processed through primary and secondary crushing, followed by fine separation, allowing materials of different particle sizes to be prepared for efficient downstream recovery and purification.",
-            techProcess3Title: "High-efficiency Metal Recovery",
+            techProcess3Title: "3. High-efficiency Metal Recovery",
             techProcess3Text: "Magnetic separation is used to recover iron, while eddy current separation further extracts valuable non-ferrous metals such as copper and aluminum from the processed material stream.",
-            techProcess4Title: "Wet Purification System",
+            techProcess4Title: "4. Wet Purification System",
             techProcess4Text: "Gravity separation and dewatering treatment are applied to improve material cleanliness, while internal water circulation reduces wastewater discharge and supports stable environmental compliance.",
-            techProcess5Title: "Recycled Material Production",
+            techProcess5Title: "5. Recycled Material Production",
             techProcess5Text: "Purified materials are mixed, molded, cured, and standardized into recycled outputs suitable for construction, infrastructure, and other compliant resource-based applications.",
-            techProcess6Title: "Fly Ash Stabilization & Leaching Control",
+            techProcess6Title: "6. Fly Ash Stabilization & Leaching Control",
             techProcess6Text: "Fly ash treatment focuses on stabilization, detoxification, and leaching-risk control, helping reduce heavy-metal mobility and supporting compliant downstream disposal or utilization pathways.",
 
             product1Name: "20–70 MM AGGREGATE",
@@ -1097,6 +1262,18 @@
             aboutText2: "我們的工作以「減量化、無害化、資源化」為核心原則，透過成熟可靠的工程技術與持續優化的工藝系統，將複雜固體廢棄物殘渣轉化為符合法規要求的再生材料與工業資源，同時支援飛灰穩定化、污染控制、廢水管理及二次污染防控。",
             aboutText3: "目前，我們在中國多個省份及越南均有在營項目，累積了處理高含水率、高雜質及多來源廢物流的實踐經驗。我們將自身定位為長期的基礎設施合作夥伴，而非短期服務提供者，專注於亞洲市場中的穩定運營、合規管理與可持續價值創造。",
             
+            why1Title: "重新定義環境效率",
+            why1Text: "BridgeLux 協助生活垃圾焚燒發電廠降低爐渣堆積與填埋依賴，透過重新定義焚燒後端殘餘物的管理方式，實現更高效率且更具可持續性的長期運營。",
+
+            why2Title: "釋放循環價值",
+            why2Text: "BridgeLux 回收有價值資源，並銜接垃圾焚燒發電鏈條的最後一環，將殘餘物轉化為持久價值，推動社會與地球邁向更可持續的未來。",
+
+            why3Title: "提升環境完整性",
+            why3Text: "透過一體化環境控制系統，BridgeLux 在運營過程中降低粉塵、廢水、異味及二次污染風險，為長期穩定、合規且負責任的基礎設施運營建立堅實基礎。",
+
+            why4Title: "塑造循環未來",
+            why4Text: "BridgeLux 超越傳統廢棄物管理模式，構建循環生態系統，使焚燒後端殘餘物轉化為可持續資源，讓廢棄物成為持久價值。",
+
             solutionsHeading: "核心解決方案",
             solution1Title: "垃圾焚燒爐渣資源化回收",
             solution1Text: "透過多階段破碎、篩分、磁選、渦電流分選及濕法淨化處理工藝，將垃圾焚燒爐渣轉化為再生骨材與可再利用材料。",
@@ -1135,17 +1312,17 @@
             navTimeline: "發展歷程",
             navNews: "新聞",
 
-            techProcess1Title: "原料接收與分類",
+            techProcess1Title: "1. 原料接收與分類",
             techProcess1Text: "進廠物料首先經由封閉式進料系統接收，並透過篩分與分選去除大尺寸雜質，同時回收初級鐵質成分，為後續主體處理流程奠定基礎。",
-            techProcess2Title: "多階段破碎系統",
+            techProcess2Title: "2. 多階段破碎系統",
             techProcess2Text: "爐渣經由一級與二級破碎處理，並配合精細分選，使不同粒徑的物料能夠進入對應的後端回收與淨化流程。",
-            techProcess3Title: "高效金屬回收",
+            techProcess3Title: "3. 高效金屬回收",
             techProcess3Text: "系統透過磁選回收鐵金屬，並進一步使用渦電流分選技術，從處理後的物料流中提取銅、鋁等具價值的有色金屬。",
-            techProcess4Title: "濕法淨化系統",
+            techProcess4Title: "4. 濕法淨化系統",
             techProcess4Text: "透過重力分選與脫水處理，系統能有效提升物料潔淨度；同時，內部循環水系統可減少廢水外排，支援長期穩定的環保合規運行。",
-            techProcess5Title: "再生材料製備",
+            techProcess5Title: "5. 再生材料製備",
             techProcess5Text: "經淨化後的物料將進一步進行混合、成型、養護與標準化處理，形成可用於建築、市政基礎設施及其他合規場景的再生資源產品。",
-            techProcess6Title: "飛灰穩定化與浸出控制",
+            techProcess6Title: "6. 飛灰穩定化與浸出控制",
             techProcess6Text: "飛灰處理重點包括穩定化、無害化及浸出風險控制，以降低重金屬遷移風險，並銜接合規的後端處置或資源化利用路徑。",
 
             product1Name: "20–70 MM 再生骨材",
@@ -1213,6 +1390,11 @@
             'hero-title', 'hero-heading', 'hero-description',
             'about-title', 'about-heading', 'about-text', 'about-text-2','about-text-3',
             
+            'why-1-title', 'why-1-text',
+            'why-2-title', 'why-2-text',
+            'why-3-title', 'why-3-text',
+            'why-4-title', 'why-4-text',
+
             'solutions-heading', 'solution-1-title', 'solution-1-text',
             'solution-2-title', 'solution-2-text',
             'solution-3-title', 'solution-3-text',

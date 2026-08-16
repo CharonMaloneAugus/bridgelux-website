@@ -29,9 +29,12 @@
       grid-template-columns: 42% 58%;
       border-top: 1px solid rgba(255,255,255,0.12);
       min-height: 360px;
+      align-items: center;
     }
 
     .news-image {
+      width: 100%;
+      aspect-ratio: 16 / 10;
       background-size: cover;
       background-position: center;
       filter: brightness(0.75);
@@ -76,7 +79,7 @@
       }
 
       .news-image {
-        height: 260px;
+        aspect-ratio: 16 / 10;
       }
 
       .news-content {

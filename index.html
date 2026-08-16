@@ -490,6 +490,51 @@
     font-weight: 300;
 }
 
+.footprint-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: 96px;
+}
+
+.footprint-panel {
+    min-height: 320px;
+    padding: 34px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01)),
+        #050805;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+.footprint-panel:hover {
+    background:
+        linear-gradient(180deg, rgba(34, 197, 94, 0.08), rgba(255, 255, 255, 0.015)),
+        #050805;
+}
+
+.footprint-index {
+    display: block;
+    margin-bottom: 28px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.28em;
+    color: #22c55e;
+}
+
+.footprint-panel h4 {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.08em;
+}
+
+.footprint-panel p {
+    min-height: 128px;
+}
+
 .project-showcase {
     max-width: 1200px;
     margin: 80px auto 120px;
@@ -639,6 +684,21 @@
     font-size: clamp(2.4rem, 13vw, 4rem);
   }
 
+  .footprint-grid {
+    grid-template-columns: 1fr;
+    margin-bottom: 64px;
+  }
+
+  .footprint-panel {
+    min-height: auto;
+    padding: 28px;
+  }
+
+  .footprint-panel p {
+    min-height: auto;
+    margin-bottom: 28px;
+  }
+
   #hero-description {
     white-space: normal !important;
     max-width: 100%;
@@ -705,6 +765,16 @@
     right: 16px;
   }
 }
+
+@media (min-width: 769px) and (max-width: 1100px) {
+  .footprint-panel {
+    padding: 26px;
+  }
+
+  .footprint-panel p {
+    min-height: 180px;
+  }
+}
     </style>
 
 <script type="application/ld+json">
@@ -736,7 +806,7 @@
         </div>
     
         <div class="ml-auto flex items-center gap-3">
-            <a href="news.html" class="lg:hidden text-[10px] font-bold uppercase tracking-[0.2em] text-white hover:text-gray-400 transition">
+            <a href="news.html" id="nav-news-mobile" class="lg:hidden text-[10px] font-bold uppercase tracking-[0.2em] text-white hover:text-gray-400 transition">
                 NEWS
             </a>
     
@@ -1055,15 +1125,21 @@
     <section id="projects" class="py-32 bg-[#0a0a0a] reveal">
         <div class="content-container">
             <h2 id="projects-heading" class="title-main mb-20 text-center">Global Footprint</h2>
-            <div class="grid md:grid-cols-2 gap-12 text-left mb-24">
-                <div class="p-10 border border-white/5 bg-[#020a02] hover:border-white/30 transition">
-                    <h4 id="proj-1-title" class="text-2xl font-bold mb-4 uppercase">Vietnam</h4>
-                    <p id="project-1-description" class="text-gray-400 text-sm mb-6 leading-relaxed">Supporting major municipal waste-to-energy facilities in Ho Chi Minh City.</p>
+            <div class="footprint-grid text-left">
+                <div class="footprint-panel">
+                    <div>
+                        <span class="footprint-index">01</span>
+                        <h4 id="proj-1-title" class="text-2xl font-bold mb-5 uppercase">Vietnam</h4>
+                        <p id="project-1-description" class="text-gray-400 text-sm leading-relaxed">Supporting major municipal waste-to-energy facilities in Ho Chi Minh City.</p>
+                    </div>
                     <div class="flex flex-wrap"><span class="location-tag" data-city="hoChiMinhCity">Ho Chi Minh City</span></div>
                 </div>
-                <div class="p-10 border border-white/5 bg-[#020a02] hover:border-white/30 transition">
-                    <h4 id="proj-2-title" class="text-2xl font-bold mb-4 uppercase">Mainland China</h4>
-                    <p id="project-2-description" class="text-gray-400 text-sm mb-6 leading-relaxed">Extensive operations across urban and regional waste streams.</p>
+                <div class="footprint-panel">
+                    <div>
+                        <span class="footprint-index">02</span>
+                        <h4 id="proj-2-title" class="text-2xl font-bold mb-5 uppercase">Mainland China</h4>
+                        <p id="project-2-description" class="text-gray-400 text-sm leading-relaxed">Extensive operations across urban and regional waste streams.</p>
+                    </div>
                     <div class="flex flex-wrap">
                         <span class="location-tag" data-city="shandong">Shandong</span>
                         <span class="location-tag" data-city="guizhou">Guizhou</span>
@@ -1072,6 +1148,17 @@
                         <span class="location-tag" data-city="guangxi">Guangxi</span>
                         <span class="location-tag" data-city="henan">Henan</span>
                         <span class="location-tag" data-city="hunan">Hunan</span>
+                    </div>
+                </div>
+                <div class="footprint-panel">
+                    <div>
+                        <span class="footprint-index">03</span>
+                        <h4 id="proj-3-title" class="text-2xl font-bold mb-5 uppercase">Thailand</h4>
+                        <p id="project-3-description" class="text-gray-400 text-sm leading-relaxed">Supporting waste-to-energy and resource recovery projects serving world-class tourism destinations and major urban centers, helping transform municipal waste into reusable resources while advancing cleaner, more sustainable local development.</p>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <span class="location-tag" data-city="phuket">Phuket</span>
+                        <span class="location-tag" data-city="bangkok">Bangkok</span>
                     </div>
                 </div>
             </div>
@@ -1100,22 +1187,22 @@
                     </div>
             
                     <div class="project-card">
-                        <img src="./public/projects/project-3.jpg" alt="Xiamei Slag Project">
+                        <img src="./public/projects/project-6.jpg" alt="Phuket Slag Project">
                         <div class="project-info">
-                            <h4 id="showcase-3-title">XIAMEI SLAG PROJECT</h4>
-                            <p id="showcase-3-location"><strong>Tangshan, Hebei, China</strong></p>
-                            <p id="showcase-3-scale">850 tons/d solid waste treatment</p>
-                            <p id="showcase-3-area">Cover 1.5 Hectares</p>
+                            <h4 id="showcase-3-title">PHUKET SLAG PROJECT</h4>
+                            <p id="showcase-3-location"><strong>Phuket, Thailand</strong></p>
+                            <p id="showcase-3-scale">1200 tons/d solid waste treatment</p>
+                            <p id="showcase-3-area"></p>
                         </div>
                     </div>
             
                     <div class="project-card">
-                        <img src="./public/projects/project-4.jpg" alt="Handerson Slag Project">
+                        <img src="./public/projects/project-5.jpg" alt="Pathum Thani Slag Project">
                         <div class="project-info">
-                            <h4 id="showcase-4-title">HANDERSON SLAG PROJECT</h4>
-                            <p id="showcase-4-location"><strong>Qixia, Shandong, China</strong></p>
-                            <p id="showcase-4-scale">400 tons/d solid waste treatment</p>
-                            <p id="showcase-4-area">Cover 1.3 Hectares</p>
+                            <h4 id="showcase-4-title">PATHUM THANI SLAG PROJECT</h4>
+                            <p id="showcase-4-location"><strong>Bangkok, Thailand</strong></p>
+                            <p id="showcase-4-scale">1000 tons/d solid waste treatment</p>
+                            <p id="showcase-4-area"></p>
                         </div>
                     </div>
                 </div>
@@ -1124,6 +1211,7 @@
             <h4 id="partners-heading" class="text-[10px] font-bold uppercase tracking-[0.5em] text-gray-600 mb-12 text-center">Strategic Partners</h4>
             <div class="partners-grid">
 
+                <span>ENERGY ABSOLUTE</span>
                 <span>VIETSTAR</span>
                 <span>BCG ENERGY</span>
                 <span>SUS ENVIRONMENT</span>
@@ -1139,7 +1227,7 @@
                 <span>TUS-SOUND</span>
                 <span>ZHENENG JINJIANG</span>
             
-                <span>WANNENG ENVIRONMENT</span>
+                <span>WANGNENG ENVIRONMENT</span>
                 <span>POWERCHINA</span>
             
             </div>
@@ -1205,9 +1293,12 @@
             project1Description: "Supporting major municipal waste-to-energy facilities in Ho Chi Minh City by providing dedicated slag resource recovery lines, enabling the transition from simple disposal to systematic reuse.",
             proj2Title: "Mainland China",
             project2Description: "Extensive operations across urban and regional waste streams. We have accumulated deep experience in managing complex, high-moisture materials common in diverse climates from Jilin to Guangxi.",
+            proj3Title: "Thailand",
+            project3Description: "Supporting waste-to-energy and resource recovery projects serving world-class tourism destinations and major urban centers, helping transform municipal waste into reusable resources while advancing cleaner, more sustainable local development.",
             partnersHeading: "Strategic Partners",
             navTimeline: "Milestones",
             navNews: "News",
+            navNewsMobile: "News",
 
             scrollText: "Scroll to explore",
 
@@ -1262,19 +1353,20 @@
             showcase2Scale: "2600 tons/d solid waste treatment",
             showcase2Area: "Cover 30 Hectares",
 
-            showcase3Title: "XIAMEI SLAG PROJECT",
-            showcase3Location: "<strong>Tangshan, Hebei, China</strong>",
-            showcase3Scale: "850 tons/d solid waste treatment",
-            showcase3Area: "Cover 1.5 Hectares",
+            showcase3Title: "PHUKET SLAG PROJECT",
+            showcase3Location: "<strong>Phuket, Thailand</strong>",
+            showcase3Scale: "1200 tons/d solid waste treatment",
+            showcase3Area: "",
 
-            showcase4Title: "HANDERSON SLAG PROJECT",
-            showcase4Location: "<strong>Qixia, Shandong, China</strong>",
-            showcase4Scale: "400 tons/d solid waste treatment",
-            showcase4Area: "Cover 1.3 Hectares",
+            showcase4Title: "PATHUM THANI SLAG PROJECT",
+            showcase4Location: "<strong>Bangkok, Thailand</strong>",
+            showcase4Scale: "1000 tons/d solid waste treatment",
+            showcase4Area: "",
 
             locationTags: {
                 hoChiMinhCity: "Ho Chi Minh City", shandong: "Shandong", guizhou: "Guizhou", jilin: "Jilin",
-                hebei: "Hebei", guangxi: "Guangxi", henan: "Henan", hunan: "Hunan"
+                hebei: "Hebei", guangxi: "Guangxi", henan: "Henan", hunan: "Hunan",
+                phuket: "Phuket", bangkok: "Bangkok"
             }
         },
         zh: {
@@ -1331,12 +1423,15 @@
             project1Description: "我們為胡志明市主要市政垃圾焚燒發電設施提供專用爐渣資源化處理產線，協助項目由單一處置模式升級為系統化、可持續的再利用體系，推動城市固體廢棄物管理向資源化轉型。",
             proj2Title: "中國大陸",
             project2Description: "我們在多個城市及區域性固體廢棄物流中開展長期運營，累積了豐富的實踐經驗，特別是在應對不同氣候條件下高含水率、成分複雜廢棄物方面，具備成熟且穩定的處理能力，覆蓋範圍自吉林至廣西。",
+            proj3Title: "泰國",
+            project3Description: "支持服務世界級旅遊目的地與主要城市中心的垃圾焚燒發電及資源化回收項目，協助將城市生活垃圾轉化為可再利用資源，並推動更清潔、更可持續的地方發展。",
             partnersHeading: "策略夥伴",
 
             scrollText: "向下探索更多",
 
             navTimeline: "發展歷程",
             navNews: "新聞",
+            navNewsMobile: "新聞",
 
             techProcess1Title: "1. 原料接收與分類",
             techProcess1Text: "進廠物料首先經由封閉式進料系統接收，並透過篩分與分選去除大尺寸雜質，同時回收初級鐵質成分，為後續主體處理流程奠定基礎。",
@@ -1389,19 +1484,20 @@
             showcase2Scale: "2600 噸/日 固體廢棄物處理能力",
             showcase2Area: "佔地 30 公頃",
 
-            showcase3Title: "廈美爐渣資源化項目",
-            showcase3Location: "<strong>中國 河北 唐山</strong>",
-            showcase3Scale: "850 噸/日 固體廢棄物處理能力",
-            showcase3Area: "佔地 1.5 公頃",
+            showcase3Title: "普吉島爐渣資源化項目",
+            showcase3Location: "<strong>泰國 普吉島</strong>",
+            showcase3Scale: "1200 噸/日 固體廢棄物處理能力",
+            showcase3Area: "",
 
-            showcase4Title: "漢德森爐渣資源化項目",
-            showcase4Location: "<strong>中國 山東 棲霞</strong>",
-            showcase4Scale: "400 噸/日 固體廢棄物處理能力",
-            showcase4Area: "佔地 1.3 公頃",
+            showcase4Title: "巴吞他尼爐渣資源化項目",
+            showcase4Location: "<strong>泰國 曼谷</strong>",
+            showcase4Scale: "1000 噸/日 固體廢棄物處理能力",
+            showcase4Area: "",
 
             locationTags: {
                 hoChiMinhCity: "胡志明市", shandong: "山東", guizhou: "貴州", jilin: "吉林",
-                hebei: "河北", guangxi: "廣西", henan: "河南", hunan: "湖南"
+                hebei: "河北", guangxi: "廣西", henan: "河南", hunan: "湖南",
+                phuket: "普吉島", bangkok: "曼谷"
             }
         }
     };
@@ -1412,7 +1508,7 @@
         currentLang = currentLang === 'en' ? 'zh' : 'en';
         
         const ids = [
-            'nav-about', 'nav-solutions', 'nav-tech', 'nav-innovation', 'nav-timeline', 'nav-projects', 'nav-news',
+            'nav-about', 'nav-solutions', 'nav-tech', 'nav-innovation', 'nav-timeline', 'nav-projects', 'nav-news', 'nav-news-mobile',
             'hero-title', 'hero-heading', 'hero-description',
             'about-title', 'about-heading', 'about-text', 'about-text-2','about-text-3',
             
@@ -1453,6 +1549,7 @@
             
             'projects-heading', 'proj-1-title', 'project-1-description',
             'proj-2-title', 'project-2-description',
+            'proj-3-title', 'project-3-description',
 
             'showcase-1-title', 'showcase-1-location', 'showcase-1-scale', 'showcase-1-area', 'showcase-1-phase',
             'showcase-2-title', 'showcase-2-location', 'showcase-2-scale', 'showcase-2-area',

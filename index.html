@@ -20,21 +20,22 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./src/design-system.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;600&family=Inter:wght@300;400;600&display=swap');
         
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000; 
-            color: #fff;
+            font-family: var(--font-body);
+            background-color: var(--bg-primary); 
+            color: var(--text-primary);
             line-height: 1.7;
             scroll-behavior: smooth;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
-        .spacex-font {
-    font-family: 'Oswald', sans-serif;
+.spacex-font {
+    font-family: var(--font-display);
     letter-spacing: 0.04em;   /* ← 关键 */
     text-transform: uppercase;
     font-weight: 600;
@@ -55,17 +56,15 @@
             text-align: center;
         }
 
-        .content-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.content-container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter-desktop); }
         
-        .solution-card {
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(255, 255, 255, 0.02);
-            transition: all 0.4s ease;
+.solution-card {
+            border: 0;
+            background: transparent;
         }
-        .solution-card:hover {
-            border-color: rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-3px);
+.solution-card:hover {
+            background: transparent;
+            transform: none;
         }
 
         .innovation-card {
@@ -73,74 +72,25 @@
             background: transparent;
         }
         
-
-        .tech-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            filter: brightness(0.7);
-            transition: all 0.8s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .tech-img:hover { filter: brightness(1); border-color: #fff; }
-
         .location-tag {
-            font-size: 0.7rem;
-            padding: 2px 10px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            margin: 3px;
+            font-size: 0.72rem;
+            margin-right: 18px;
+            margin-bottom: 8px;
             display: inline-block;
-            color: #888;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         nav { background: rgba(0, 0, 0, 0.9); }
-        .timeline-dot {
-    position: absolute;
-    left: -7px;
-    top: 8px;
-    width: 14px;
-    height: 14px;
-    background: #22c55e;
-    border-radius: 999px;
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.8);
-}
-
-.timeline-item:hover h4 {
-    color: #22c55e;
-    transition: color 0.3s ease;
-}
-.section-title {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    line-height: 1.05;
-}
-
-.section-label {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: #22c55e;
-}
-
-.body-text {
-    font-family: 'Inter', sans-serif;
-    color: #a1a1aa;
-    line-height: 1.8;
-    font-weight: 300;
-}
-
 #timeline {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
 }
 
 #timeline h2,
 #timeline h3,
 #timeline h4 {
-    font-family: 'Oswald', sans-serif;
+    font-family: var(--font-display);
 }
 
 .partners-grid {
@@ -165,113 +115,94 @@
 }
 
 .why-section {
-    background: #000;
-}
-
-.why-row {
-    position: relative;
-    min-height: 72vh;
-    display: flex;
-    align-items: center;
-    background-size: cover;
-    background-position: center center;
-    overflow: hidden;
-}
-
-.why-row::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.76) 0%,
-        rgba(0, 0, 0, 0.58) 28%,
-        rgba(0, 0, 0, 0.20) 56%,
-        rgba(0, 0, 0, 0.02) 100%
-    );
-}
-
-.why-row.right::before {
-    background: linear-gradient(
-        270deg,
-        rgba(0, 0, 0, 0.76) 0%,
-        rgba(0, 0, 0, 0.58) 28%,
-        rgba(0, 0, 0, 0.20) 56%,
-        rgba(0, 0, 0, 0.02) 100%
-    );
-}
-
-.why-content {
-    position: relative;
-    z-index: 2;
-    width: min(680px, 46vw);
-    margin-left: clamp(40px, 6vw, 96px);
-    color: #fff;
-}
-
-.why-row.right .why-content {
-    margin-left: auto;
-    margin-right: clamp(40px, 6vw, 96px);
+    background: var(--bg-primary);
+    padding-bottom: var(--space-8);
 }
 
 .why-title {
-    font-family: 'Oswald', sans-serif;
-    font-size: clamp(2.8rem, 4.4vw, 4.4rem);
-    line-height: 1.04;
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 2.4vw, 2.8rem);
+    line-height: 1.06;
     font-weight: 300;
     letter-spacing: 0.025em;
     text-transform: uppercase;
-    margin: 0 0 22px 0;
-    color: #fff;
+    margin: 0 0 16px 0;
+    color: var(--text-primary);
 }
 
 .why-text {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(0.86rem, 0.92vw, 0.98rem);
     line-height: 1.75;
     font-weight: 300;
-    color: rgba(255,255,255,0.78);
+    color: var(--text-secondary);
     margin: 0;
-    max-width: 560px;
+    max-width: 520px;
+}
+
+.why-editorial {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: clamp(48px, 7vw, 120px);
+    align-items: start;
+}
+
+.why-image-anchor {
+    position: sticky;
+    top: 110px;
+}
+
+.why-image-anchor img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 65% center;
+    filter: saturate(0.86) contrast(1.04) brightness(0.82);
+}
+
+.why-statements {
+    display: grid;
+    gap: var(--space-6);
+}
+
+.why-support-item {
+    max-width: 640px;
+}
+
+.why-index,
+.solution-index {
+    display: block;
+    margin-bottom: var(--space-3);
+    font-family: var(--font-display);
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    font-weight: 300;
 }
 
 @media (max-width: 768px) {
-    .why-row {
-        min-height: 56vh;
-        background-position: center center;
-    }
-
-    .why-row::before,
-    .why-row.right::before {
-        background: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.66) 0%,
-            rgba(0, 0, 0, 0.45) 34%,
-            rgba(0, 0, 0, 0.32) 100%
-        );
-    }
-
-    .why-content,
-    .why-row.right .why-content {
-        width: auto;
-        margin-left: 24px;
-        margin-right: 24px;
-    }
-
     .why-title {
-        font-family: 'Oswald', sans-serif;
         font-size: 2.2rem;
         line-height: 1.04;
-        font-weight: 300;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-        margin-bottom: 14px;
     }
 
     .why-text {
-        font-family: 'Inter', sans-serif;
         font-size: 0.82rem;
         line-height: 1.65;
+    }
+
+    .why-editorial {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+    }
+
+    .why-image-anchor {
+        position: static;
+    }
+
+    .why-image-anchor img {
+        aspect-ratio: 16 / 10;
     }
 }
 
@@ -280,76 +211,378 @@
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    transition: all 0.3s ease;
+    color: var(--text-muted);
+    transition: color var(--motion-duration-fast) var(--motion-ease);
 }
 
 .partners-grid span:hover {
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .innovation-img {
     width: 100%;
-    height: 260px;
+    height: auto;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
-    border-radius: 18px;
+    border-radius: var(--radius-media);
     filter: brightness(0.82);
     transition: none;
     border: none;
     display: block;
 }
 
+.innovation-editorial {
+    display: grid;
+    gap: var(--space-8);
+}
+
+.innovation-feature {
+    display: grid;
+    grid-template-columns: 6fr 5fr;
+    gap: clamp(40px, 7vw, 110px);
+    align-items: center;
+}
+
+.innovation-feature:nth-child(even) img {
+    order: 2;
+}
+
+.innovation-copy h4 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: var(--space-4);
+}
+
+.innovation-copy p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 600px;
+}
+
+.editorial-section-header {
+    text-align: left;
+    max-width: 820px;
+}
+
+.editorial-section-header .ds-eyebrow {
+    margin-bottom: var(--space-3);
+}
+
+#about {
+    padding-bottom: var(--space-6);
+}
+
+#why-bridgelux {
+    padding-top: var(--space-5);
+}
+
+#technology {
+    padding-top: var(--space-7);
+}
+
 .product-gallery-section {
-    padding: 0 0 24px;
-    background: #000000;
+    padding-top: var(--space-7);
 }
 
-.product-scroll {
-    display: flex;
-    gap: 22px;
-    overflow-x: auto;
+#projects {
+    padding-top: var(--space-9);
+}
+
+.about-body {
+    max-width: 760px;
+}
+
+.about-body > p:not(.about-scope) + p:not(.about-scope) {
+    margin-top: var(--space-3);
+}
+
+.about-scope {
+    margin-top: var(--space-5);
+    color: var(--text-muted);
+    font-family: var(--font-display);
+    font-size: 0.84rem;
+    line-height: 1.8;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.solutions-editorial {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.38fr) minmax(0, 0.62fr);
+    gap: clamp(48px, 7vw, 110px);
+    align-items: start;
+}
+
+.solutions-heading-block {
+    position: sticky;
+    top: 110px;
+}
+
+.solutions-anchor-image {
+    width: 100%;
+    margin-top: var(--space-6);
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    filter: saturate(0.82) contrast(1.04) brightness(0.78);
+}
+
+.solutions-content {
+    display: grid;
+    gap: var(--space-7);
+}
+
+.solution-primary h4 {
+    font-family: var(--font-display);
+    font-size: clamp(2.7rem, 4.2vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+    font-weight: 300;
+    max-width: 820px;
+}
+
+.solution-primary p {
+    max-width: 620px;
+    margin-top: var(--space-4);
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.solution-secondary-group {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(var(--space-4), 4vw, var(--space-6));
+}
+
+.solution-supporting-group {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+    padding-top: var(--space-2);
+}
+
+.solution-secondary-group h4,
+.solution-supporting-group h4 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2vw, 2.2rem);
+    line-height: 1.08;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: var(--space-3);
+}
+
+.solution-secondary-group p,
+.solution-supporting-group p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.72;
+    font-weight: 300;
+}
+
+.solution-supporting-group h4,
+.solution-supporting-group p {
+    color: var(--text-muted);
+}
+
+.solution-supporting-group .ds-metadata {
+    grid-column: 1 / -1;
+}
+
+.product-gallery-section {
+    background: var(--bg-primary);
+}
+
+.resource-output-layout {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: clamp(48px, 7vw, 120px);
+    align-items: start;
+}
+
+.resource-output-list {
+    display: grid;
+    gap: var(--space-5);
+}
+
+.resource-output-item {
+    max-width: 560px;
+    text-align: left;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: inherit;
     padding: 0;
-    cursor: grab;
-    scroll-behavior: smooth;
-    user-select: none;
-
-    /* 隐藏底部滚动条 */
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    cursor: pointer;
+    opacity: 0.56;
+    transition: opacity var(--motion-duration-fast) var(--motion-ease);
 }
 
-.product-scroll::-webkit-scrollbar {
+.resource-output-item.active,
+.resource-output-item:hover {
+    opacity: 1;
+}
+
+.resource-output-item h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 3vw, 3.7rem);
+    line-height: 1;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.resource-output-item p {
+    max-width: 430px;
+    margin-top: var(--space-2);
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+
+.output-count {
+    display: block;
+    margin-top: var(--space-2);
+    font-family: var(--font-display);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.product-explorer {
+    min-width: 0;
+}
+
+.product-feature {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+}
+
+.product-feature img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    filter: saturate(0.86) contrast(1.04) brightness(0.84);
+    transition: opacity var(--motion-duration-base) var(--motion-ease);
+}
+
+.product-feature-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4);
+}
+
+.product-feature-meta h3 {
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    font-size: clamp(1.8rem, 2.8vw, 3.4rem);
+    line-height: 1.04;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: right;
+}
+
+.product-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+}
+
+.product-controls button {
+    border: 0;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.product-thumb-rail {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: var(--space-2);
+}
+
+.product-all-label {
+    margin-top: var(--space-5);
+}
+
+.product-thumb {
+    flex: 0 0 30%;
+    min-width: 150px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    opacity: 0.55;
+    cursor: pointer;
+    scroll-snap-align: start;
+}
+
+.product-thumb.active {
+    opacity: 1;
+}
+
+.product-thumb img,
+.product-mobile-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    filter: saturate(0.86) contrast(1.04) brightness(0.84);
+}
+
+.product-thumb span,
+.product-mobile-card span {
+    display: block;
+    margin-top: var(--space-2);
+    font-family: var(--font-display);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.product-mobile-rails {
     display: none;
 }
 
-.product-scroll:active {
-    cursor: grabbing;
-}
-
-.product-card {
-    flex: 0 0 172px;
-}
-
-.product-card img {
-    width: 172px;
-    height: 172px;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    display: block;
-    border-radius: 4px;
-    background: #f3f3f3;
-}
-
-.product-name {
-    margin-top: 14px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.94rem;
-    line-height: 1.2;
-    color: rgba(255,255,255,0.9);
-    font-weight: 300;
-    letter-spacing: 0.045em;
+.product-mobile-group h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    line-height: 1.08;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    white-space: nowrap;
+    font-weight: 300;
+    margin-bottom: var(--space-3);
+}
+
+.product-mobile-rail {
+    display: flex;
+    gap: var(--space-3);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: var(--space-3);
+}
+
+.product-mobile-card {
+    flex: 0 0 72%;
+    scroll-snap-align: start;
 }
 
 @media (max-width: 768px) {
@@ -357,23 +590,22 @@
         padding: 0 0 20px;
     }
 
-    .product-scroll {
-        gap: 16px;
+    .resource-output-layout {
+        grid-template-columns: 1fr;
     }
 
-    .product-card {
-        flex: 0 0 142px;
+    .resource-output-list {
+        gap: var(--space-4);
     }
 
-    .product-card img {
-        width: 142px;
-        height: 142px;
-        aspect-ratio: 1 / 1;
-        border-radius: 4px;
+    .product-explorer {
+        display: none;
     }
 
-    .product-name {
-        font-size: 0.82rem;
+    .product-mobile-rails {
+        display: grid;
+        gap: var(--space-6);
+        margin-top: var(--space-6);
     }
 }
 
@@ -381,7 +613,7 @@
     position: relative;
     height: 100vh;
     overflow: hidden;
-    background: #000;
+    background: var(--bg-primary);
 }
 
 .milestone-slide {
@@ -390,7 +622,7 @@
     background-size: cover;
     background-position: center;
     opacity: 0;
-    transition: opacity 0.7s ease;
+    transition: opacity var(--motion-duration-reveal) var(--motion-ease);
 }
 
 .milestone-slide::before {
@@ -414,15 +646,15 @@
 }
 
 .milestone-year {
-    font-family: 'Oswald', sans-serif;
+    font-family: var(--font-display);
     letter-spacing: 0.35em;
-    color: #22c55e;
+    color: var(--accent);
     font-weight: 600;
     margin-bottom: 24px;
 }
 
 .milestone-content h2 {
-    font-family: 'Oswald', sans-serif;
+    font-family: var(--font-display);
     font-size: clamp(2.4rem, 5vw, 4.8rem);
     line-height: 1.05;
     text-transform: uppercase;
@@ -432,7 +664,7 @@
 }
 
 .milestone-content p {
-    color: rgba(255,255,255,0.82);
+    color: var(--text-secondary);
     font-size: 1rem;
     line-height: 1.8;
 }
@@ -443,7 +675,7 @@
     top: 50%;
     transform: translateY(-50%);
     font-size: 72px;
-    color: white;
+    color: var(--text-primary);
     opacity: 0.8;
     background: transparent;
     border: none;
@@ -478,11 +710,11 @@
 }
 
 .dot.active {
-    background: #ffffff;
+    background: var(--accent);
 }
 
 .title-main {
-    font-family: 'Oswald', sans-serif;
+    font-family: var(--font-display);
     font-size: clamp(2.4rem, 5vw, 4.8rem);
     line-height: 1.05;
     text-transform: uppercase;
@@ -493,74 +725,70 @@
 .footprint-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.08);
+    gap: clamp(48px, 7vw, 120px);
     margin-bottom: 96px;
 }
 
 .footprint-panel {
-    min-height: 320px;
-    padding: 34px;
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01)),
-        #050805;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: background 0.35s ease, border-color 0.35s ease;
-}
-
-.footprint-panel:hover {
-    background:
-        linear-gradient(180deg, rgba(34, 197, 94, 0.08), rgba(255, 255, 255, 0.015)),
-        #050805;
+    min-height: 0;
+    padding: 0;
+    background: transparent;
+    display: block;
 }
 
 .footprint-index {
     display: block;
     margin-bottom: 28px;
-    font-family: 'Oswald', sans-serif;
+    font-family: var(--font-display);
     font-size: 0.75rem;
     letter-spacing: 0.28em;
-    color: #22c55e;
+    color: var(--accent);
 }
 
 .footprint-panel h4 {
-    font-family: 'Oswald', sans-serif;
+    font-family: var(--font-display);
     letter-spacing: 0.08em;
 }
 
 .footprint-panel p {
-    min-height: 128px;
+    min-height: 0;
+    margin-bottom: var(--space-4);
 }
 
 .project-showcase {
-    max-width: 1200px;
+    max-width: var(--container-max);
     margin: 80px auto 120px;
 }
 
 .project-track {
-    display: flex;
-    gap: 24px;
-    justify-content: center;
+    display: grid;
+    gap: clamp(48px, 6vw, 96px);
+}
+
+.project-track.project-system {
+    display: grid;
+    gap: clamp(48px, 6vw, 96px);
 }
 
 .project-card {
-    flex: 1;               /* ⭐ 自动均分 */
-    max-width: 300px;      /* 控制最大宽度 */
+    max-width: none;
+}
+
+.project-system .project-card {
+    flex: initial;
 }
 
 .project-card img {
     width: 100%;
-    height: 230px; /* 原来260 → 缩小 */
+    height: auto;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
-    border-radius: 16px; /* ✅ 圆角 */
-    transition: transform 0.4s ease;
+    border-radius: var(--radius-media);
+    transition: filter var(--motion-duration-base) var(--motion-ease), transform var(--motion-duration-base) var(--motion-ease);
 }
 
 .project-card:hover img {
-    transform: scale(1.04);
+    transform: none;
 }
 
 .project-info {
@@ -568,8 +796,8 @@
 }
 
 .project-info h4 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.2rem; /* 缩小 */
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 3.4rem);
     line-height: 1.1;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -578,72 +806,123 @@
 }
 
 .project-info p {
-    font-size: 0.85rem; /* 缩小 */
-    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    color: var(--text-muted);
     line-height: 1.4;
 }
 
 .project-info strong {
-    color: #fff;
+    color: var(--text-primary);
     font-weight: 600;
 }
 
+.project-meta span {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.project-meta span + span::before {
+    content: "/";
+    margin: 0 10px;
+    color: var(--text-faint);
+}
+
 .tech-scroll {
-    display: flex;
-    gap: 28px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 24px;
+    display: grid;
+    gap: var(--space-8);
+    overflow: visible;
+    padding-bottom: 0;
     position: relative;
-    scroll-behavior: smooth;
 }
 
 .tech-process-card {
-    flex: 0 0 420px;
-    scroll-snap-align: start;
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    gap: clamp(40px, 7vw, 110px);
+    align-items: center;
+}
+
+.tech-process-card:nth-child(2),
+.tech-process-card:nth-child(5) {
+    grid-template-columns: 6fr 5fr;
+}
+
+.tech-process-card:nth-child(1),
+.tech-process-card:nth-child(4),
+.tech-process-card:nth-child(6) {
+    grid-template-columns: 4.5fr 6fr;
+}
+
+.tech-process-card:nth-child(even) img {
+    order: -1;
 }
 
 .tech-process-card img {
-    width: 420px;
-    height: 420px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
-    border-radius: 0;
+    border-radius: var(--radius-none);
     filter: brightness(0.82);
-    transition: all 0.45s ease;
+    transition: filter var(--motion-duration-base) var(--motion-ease), transform var(--motion-duration-base) var(--motion-ease);
+}
+
+.tech-process-card:nth-child(2) img,
+.tech-process-card:nth-child(5) img {
+    aspect-ratio: 4 / 3;
 }
 
 .tech-process-card:hover img {
     filter: brightness(1);
-    transform: scale(1.02);
+    transform: none;
 }
 
 .tech-process-text {
     text-align: left;
-    padding-top: 20px;
+    padding-top: 0;
 }
 
 .tech-process-text h4 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.02rem;
-    line-height: 1.15;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.2vw, 4rem);
+    line-height: 1;
     text-transform: uppercase;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.035em;
     font-weight: 300;
-    margin-bottom: 12px;
-    white-space: nowrap;
+    margin-bottom: 22px;
+    white-space: normal;
+}
+
+.system-step .tech-process-text h4 {
+    white-space: normal;
 }
 
 .tech-process-text p {
-    font-size: 0.92rem;
-    line-height: 1.65;
-    color: rgba(255,255,255,0.62);
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 560px;
+}
+
+.process-number {
+    display: block;
+    margin-bottom: var(--space-4);
+    font-family: var(--font-display);
+    color: var(--text-muted);
+    font-size: clamp(1.8rem, 3vw, 3.4rem);
+    line-height: 1;
+    letter-spacing: 0.12em;
     font-weight: 300;
 }
 
 .reveal {
     opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(var(--motion-translate-reveal));
+    transition: opacity var(--motion-duration-reveal) var(--motion-ease), transform var(--motion-duration-reveal) var(--motion-ease);
 }
 
 .reveal.visible {
@@ -684,6 +963,11 @@
     font-size: clamp(2.4rem, 13vw, 4rem);
   }
 
+  .content-container {
+    padding-left: var(--gutter-mobile);
+    padding-right: var(--gutter-mobile);
+  }
+
   .footprint-grid {
     grid-template-columns: 1fr;
     margin-bottom: 64px;
@@ -711,24 +995,32 @@
     grid-template-columns: 1fr !important;
   }
 
-  #about .border-l {
-    border-left: none !important;
-    padding-left: 0 !important;
+  .tech-process-card {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
   }
 
-  .tech-process-card {
-    flex: 0 0 82vw;
+  .tech-process-card:nth-child(1),
+  .tech-process-card:nth-child(2),
+  .tech-process-card:nth-child(4),
+  .tech-process-card:nth-child(5),
+  .tech-process-card:nth-child(6) {
+    grid-template-columns: 1fr;
   }
 
   .tech-process-card img {
-    width: 82vw;
-    height: 82vw;
+    width: 100%;
+    height: auto;
+  }
+
+  .tech-process-card:nth-child(even) img {
+    order: 0;
   }
 
   .tech-process-text h4 {
-    font-size: 0.72rem;
-    letter-spacing: 0.01em;
-    white-space: nowrap;
+    font-size: clamp(2rem, 10vw, 3.4rem);
+    letter-spacing: 0.025em;
+    white-space: normal;
   }
 
   .project-track {
@@ -740,6 +1032,46 @@
   .project-card {
     max-width: 100%;
   }
+
+  .solutions-editorial,
+  .solution-secondary-group,
+  .solution-supporting-group,
+  .innovation-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .solutions-heading-block,
+  .solution-primary,
+  .solution-secondary-group,
+  .solution-supporting-group {
+    grid-column: auto;
+    position: static;
+  }
+
+  .solution-primary h4 {
+    font-size: clamp(2.6rem, 11vw, 4rem);
+  }
+
+  .solutions-anchor-image {
+    aspect-ratio: 16 / 10;
+  }
+
+  .innovation-feature:nth-child(even) img {
+    order: 0;
+  }
+
+  .innovation-copy h4 {
+    font-size: clamp(2.2rem, 10vw, 3.8rem);
+  }
+
+  .project-meta span {
+    display: block;
+  }
+
+  .project-meta span + span::before {
+    content: none;
+  }
+
   .innovation-img {
     height: 220px;
   }
@@ -767,12 +1099,23 @@
 }
 
 @media (min-width: 769px) and (max-width: 1100px) {
-  .footprint-panel {
-    padding: 26px;
+  .solutions-editorial,
+  .solution-secondary-group,
+  .solution-supporting-group {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .footprint-panel p {
-    min-height: 180px;
+  .solutions-editorial {
+    grid-template-columns: 1fr;
+  }
+
+  .solutions-heading-block {
+    position: static;
+  }
+
+  .solution-secondary-group,
+  .solution-supporting-group {
+    grid-column: auto;
   }
 }
     </style>
@@ -790,27 +1133,27 @@
 </head>
 <body>
 
-    <nav class="fixed w-full z-50 px-5 md:px-8 py-5 md:py-6 flex items-center backdrop-blur-lg border-b border-white/5">
+    <nav class="site-nav fixed w-full z-50 px-5 md:px-8 py-5 md:py-6 flex items-center">
         <a href="/" class="flex items-center">
             <img src="./src/logo.jpg" alt="BridgeLux Logo" class="h-7 md:h-10 w-auto object-contain">
         </a>
     
         <div class="hidden lg:flex ml-auto mr-10 space-x-10 text-[10px] font-bold uppercase tracking-[0.2em]">
-            <a href="#about" id="nav-about" class="hover:text-gray-400 transition">About</a>
-            <a href="#solutions" id="nav-solutions" class="hover:text-gray-400 transition">Solutions</a>
-            <a href="#technology" id="nav-tech" class="hover:text-gray-400 transition">Technology</a>
-            <a href="#innovation" id="nav-innovation" class="hover:text-gray-400 transition">Innovation</a>
-            <a href="#timeline" id="nav-timeline" class="hover:text-gray-400 transition">Milestones</a>
-            <a href="#projects" id="nav-projects" class="hover:text-gray-400 transition">Projects</a>
-            <a href="news.html" id="nav-news" class="hover:text-gray-400 transition">News</a>
+            <a href="#about" id="nav-about">About</a>
+            <a href="#solutions" id="nav-solutions">Solutions</a>
+            <a href="#technology" id="nav-tech">Technology</a>
+            <a href="#innovation" id="nav-innovation">Innovation</a>
+            <a href="#timeline" id="nav-timeline">Milestones</a>
+            <a href="#projects" id="nav-projects">Projects</a>
+            <a href="news.html" id="nav-news">News</a>
         </div>
     
         <div class="ml-auto flex items-center gap-3">
-            <a href="news.html" id="nav-news-mobile" class="lg:hidden text-[10px] font-bold uppercase tracking-[0.2em] text-white hover:text-gray-400 transition">
+            <a href="news.html" id="nav-news-mobile" class="lg:hidden text-[10px] font-bold uppercase tracking-[0.2em]">
                 NEWS
             </a>
     
-            <button id="toggle-lang" class="text-[10px] md:text-xs font-bold tracking-widest text-white border border-white/20 px-3 md:px-4 py-2 hover:bg-white hover:text-black transition duration-300 rounded uppercase">
+            <button id="toggle-lang" class="ds-button">
                 繁體中文
             </button>
         </div>
@@ -824,10 +1167,10 @@
             
             <h1 id="hero-heading" class="title-main mb-6 max-w-[900px]">
                 Transforming Solid Waste <br>
-                <span class="text-green-500">into Sustainable Value</span>
+                <span class="hero-emphasis">into Sustainable Value</span>
             </h1>
             <p id="hero-description"
-   class="max-w-[900px] text-sm md:text-base text-gray-300 font-light leading-relaxed whitespace-nowrap">
+                 class="max-w-[900px] text-sm md:text-base text-gray-300 font-light leading-relaxed">
     Waste-to-energy slag treatment and resource recovery delivering compliant, scalable solutions across China and Southeast Asia.
 </p>
         </div>
@@ -837,149 +1180,170 @@
         </div>
     </header>
 
-    <section id="about" class="py-32 reveal">
+    <section id="about" class="ds-section statement-section reveal">
         <div class="content-container">
-            <div class="grid lg:grid-cols-12 gap-16">
-                <div class="lg:col-span-5">
-                    <h2 id="about-title" class="text-xs font-bold uppercase tracking-[0.4em] text-gray-500 mb-6">About Us</h2>
+            <div class="statement-heading">
+                    <h2 id="about-title" class="ds-eyebrow mb-6">01 / Company</h2>
                     <h3 id="about-heading" class="title-main">Professional <br>Resource Recovery <br>Enterprise</h3>
-                </div>
-                <div class="lg:col-span-7 text-gray-400 space-y-8 font-light leading-relaxed border-l border-white/10 pl-10">
-                    <p id="about-text">We are a professional environmental technology and circular-resource enterprise focused on the integrated treatment and resource recovery of post-incineration residues, including bottom ash, fly ash, industrial solid waste, and legacy waste streams. Our business spans project development, system design, facility construction, equipment integration, and long-term operation.</p>
-                    <p id="about-text-2">Our work is grounded in the core principles of reduction, harmless treatment, and resource utilization. Through proven engineering methods and continuously optimized process systems, we transform complex solid-waste residues into compliant recycled materials and industrial resources, while supporting fly ash stabilization, pollution control, wastewater management, and secondary pollution prevention.</p>
-                    <p id="about-text-3">With operating projects in multiple provinces in China, Vietnam, and Thailand, we have accumulated extensive experience in managing high-moisture, high-impurity, and multi-source waste streams. We position ourselves as a long-term infrastructure partner rather than a short-term service provider, focusing on stable operation, regulatory compliance, and sustainable value creation across Asia.</p>
-                </div>
+            </div>
+            <div class="statement-body about-body">
+                    <p id="about-text">We are a professional environmental technology and circular-resource enterprise focused on integrated treatment and resource recovery for post-incineration residues, including bottom ash, fly ash, industrial solid waste, and legacy waste streams. Through proven engineering methods and long-term operating practice, we transform complex solid-waste residues into compliant recycled materials and industrial resources.</p>
+                    <p id="about-text-2">With operations across China, Vietnam, and Thailand, BridgeLux has developed practical experience across diverse waste compositions, climates, and operating environments. We position ourselves as a long-term infrastructure partner, with an emphasis on stable operation, regulatory compliance, and sustainable resource recovery.</p>
+                    <p id="about-scope" class="about-scope">Project Development · System Design · Facility Construction · Equipment Integration · Long-term Operations</p>
             </div>
         </div>
     </section>
 
-    <section id="why-bridgelux" class="why-section reveal">
-        <div class="why-row left" style="background-image: url('./src/why-wte-1.jpg');">
-            <div class="why-content">
-                <h3 id="why-1-title" class="why-title">Redefine Environmental Efficiency</h3>
-                <p id="why-1-text" class="why-text">
-                    BridgeLux helps municipal solid waste incineration plants reduce bottom ash accumulation and landfill dependency by redefining how post-incineration residues are managed, enabling more efficient operations and stronger long-term sustainability.
-                </p>
+    <section id="why-bridgelux" class="why-section image-story-section reveal">
+        <div class="content-container why-editorial">
+            <div class="why-image-anchor">
+                <img src="./src/why-wte-3.jpg" alt="Waste-to-energy resource recovery operation" class="image-treatment-monumental">
             </div>
-        </div>
-    
-        <div class="why-row right" style="background-image: url('./src/why-wte-2.jpg');">
-            <div class="why-content">
-                <h3 id="why-2-title" class="why-title">Unlock Circular Value</h3>
+
+            <div class="why-statements">
+                <div class="why-support-item">
+                    <span class="why-index">01</span>
+                    <h3 id="why-1-title" class="why-title">Redefine Environmental Efficiency</h3>
+                    <p id="why-1-text" class="why-text">
+                        BridgeLux helps municipal solid waste incineration plants reduce bottom ash accumulation and landfill dependency by redefining how post-incineration residues are managed, enabling more efficient operations and stronger long-term sustainability.
+                    </p>
+                </div>
+                <div class="why-support-item">
+                    <span class="why-index">02</span>
+                    <h3 id="why-2-title" class="why-title">Unlock Circular Value</h3>
                 <p id="why-2-text" class="why-text">
                     BridgeLux recovers valuable resources and connects the final stage of the waste-to-energy chain, transforming residual materials into lasting value and advancing a more sustainable future for society and the planet.
                 </p>
             </div>
-        </div>
-    
-        <div class="why-row left" style="background-image: url('./src/why-wte-3.jpg');">
-            <div class="why-content">
+            <div class="why-support-item">
+                <span class="why-index">03</span>
                 <h3 id="why-3-title" class="why-title">Elevate Environmental Integrity</h3>
                 <p id="why-3-text" class="why-text">
                     Through integrated environmental systems, BridgeLux minimizes dust, wastewater, odor, and secondary pollution risks during operation and establishes a foundation for stable, compliant, and responsible long-term infrastructure performance.
                 </p>
             </div>
-        </div>
-    
-        <div class="why-row right" style="background-image: url('./src/why-wte-4.jpg');">
-            <div class="why-content">
+            <div class="why-support-item">
+                <span class="why-index">04</span>
                 <h3 id="why-4-title" class="why-title">Shape the Circular Future</h3>
                 <p id="why-4-text" class="why-text">
                     BridgeLux moves beyond traditional waste management by building circular ecosystems where post-incineration residues are transformed into sustainable resources and waste becomes enduring value.
                 </p>
             </div>
+            </div>
         </div>
     </section>
 
-    <section id="solutions" class="py-32 bg-[#0a0a0a] reveal">
+    <section id="solutions" class="ds-section ds-section-muted grid-section reveal">
         <div class="content-container">
-            <h2 id="solutions-heading" class="title-main mb-20 text-center">Core Solutions</h2>
-    
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="solution-card p-10">
-                    <h4 id="solution-1-title" class="text-xl font-bold mb-4 uppercase text-white">WTE Bottom Ash Resource Recovery</h4>
-                    <p id="solution-1-text" class="text-sm text-gray-400">Through multi-stage crushing, screening, magnetic separation, eddy current separation, and wet purification, incineration bottom ash is transformed into recycled aggregates and reusable materials.</p>
+            <div class="solutions-editorial">
+                <div class="solutions-heading-block">
+                    <p id="solutions-label" class="ds-eyebrow mb-6">02 / Capabilities</p>
+                    <h2 id="solutions-heading" class="title-main">Core Solutions</h2>
+                    <img src="./src/why-wte-2.jpg" alt="Integrated resource recovery system" class="solutions-anchor-image image-treatment-process">
                 </div>
-    
-                <div class="solution-card p-10">
-                    <h4 id="solution-2-title" class="text-xl font-bold mb-4 uppercase text-white">Fly Ash Stabilization & Detoxification</h4>
-                    <p id="solution-2-text" class="text-sm text-gray-400">Treatment solutions for municipal solid waste incineration fly ash, focusing on stabilization, detoxification, leaching-risk control, and compliant downstream disposal or utilization pathways.</p>
-                </div>
-    
-                <div class="solution-card p-10">
-                    <h4 id="solution-3-title" class="text-xl font-bold mb-4 uppercase text-white">Industrial Solid Waste Utilization</h4>
-                    <p id="solution-3-text" class="text-sm text-gray-400">Tailored treatment and resource utilization for industrial residues, biomass slag, coal-derived residues, sludge, construction waste, and other non-hazardous solid waste streams.</p>
-                </div>
-    
-                <div class="solution-card p-10">
-                    <h4 id="solution-4-title" class="text-xl font-bold mb-4 uppercase text-white">Legacy Waste & Soil Remediation</h4>
-                    <p id="solution-4-text" class="text-sm text-gray-400">Integrated solutions for aged waste remediation, contaminated soil treatment, and site-level environmental improvement, supporting long-term land restoration and risk control.</p>
-                </div>
-    
-                <div class="solution-card p-10">
-                    <h4 id="solution-5-title" class="text-xl font-bold mb-4 uppercase text-white">Environmental Control Systems</h4>
-                    <p id="solution-5-text" class="text-sm text-gray-400">Fully enclosed material handling, odor treatment, dust suppression, wastewater circulation, and emergency environmental response systems for stable and compliant operations.</p>
-                </div>
-    
-                <div class="solution-card p-10">
-                    <h4 id="solution-6-title" class="text-xl font-bold mb-4 uppercase text-white">Resource-Based End Products</h4>
-                    <p id="solution-6-text" class="text-sm text-gray-400">Stable, quality-controlled recycled outputs for green building materials, road base layers, municipal infrastructure, and other compliant resource-based applications.</p>
+
+                <div class="solutions-content">
+                    <div class="solution-primary solution-card">
+                        <span class="solution-index">01</span>
+                        <h4 id="solution-1-title">WTE Bottom Ash Resource Recovery</h4>
+                        <p id="solution-1-text">Through multi-stage crushing, screening, magnetic separation, eddy current separation, and wet purification, incineration bottom ash is transformed into recycled aggregates and reusable materials.</p>
+                    </div>
+
+                    <div class="solution-secondary-group">
+                        <div class="solution-card">
+                            <span class="solution-index">02</span>
+                            <h4 id="solution-2-title">Fly Ash Stabilization & Detoxification</h4>
+                            <p id="solution-2-text">Treatment solutions for municipal solid waste incineration fly ash, focusing on stabilization, detoxification, leaching-risk control, and compliant downstream disposal or utilization pathways.</p>
+                        </div>
+
+                        <div class="solution-card">
+                            <span class="solution-index">03</span>
+                            <h4 id="solution-3-title">Industrial Solid Waste Utilization</h4>
+                            <p id="solution-3-text">Tailored treatment and resource utilization for industrial residues, biomass slag, coal-derived residues, sludge, construction waste, and other non-hazardous solid waste streams.</p>
+                        </div>
+
+                        <div class="solution-card">
+                            <span class="solution-index">04</span>
+                            <h4 id="solution-4-title">Legacy Waste & Soil Remediation</h4>
+                            <p id="solution-4-text">Integrated solutions for aged waste remediation, contaminated soil treatment, and site-level environmental improvement, supporting long-term land restoration and risk control.</p>
+                        </div>
+                    </div>
+
+                    <div class="solution-supporting-group">
+                        <p id="supporting-capabilities-label" class="ds-metadata">Supporting Capabilities</p>
+                        <div class="solution-card">
+                            <h4 id="solution-5-title">Environmental Control Systems</h4>
+                            <p id="solution-5-text">Fully enclosed material handling, odor treatment, dust suppression, wastewater circulation, and emergency environmental response systems for stable and compliant operations.</p>
+                        </div>
+
+                        <div class="solution-card">
+                            <h4 id="solution-6-title">Resource-Based End Products</h4>
+                            <p id="solution-6-text">Stable, quality-controlled recycled outputs for green building materials, road base layers, municipal infrastructure, and other compliant resource-based applications.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="technology" class="pt-32 pb-10 reveal">
+    <section id="technology" class="ds-section image-story-section reveal">
         <div class="content-container">
-            <div class="text-center mb-20">
+            <div class="ds-section-header editorial-section-header">
+                <p id="technology-label" class="ds-eyebrow">03 / Technology</p>
                 <h2 id="technology-heading" class="title-main">Technology & Process</h2>
             </div>
     
-            <div class="tech-scroll">
-                <div class="tech-process-card">
-                    <img src="./src/tech-process-1.jpg" alt="Raw Material Receiving and Classification">
+            <div class="tech-scroll process-sequence">
+                <div class="tech-process-card system-step">
+                    <img src="./src/tech-process-1.jpg" alt="Raw Material Receiving and Classification" class="image-treatment-process">
                     <div class="tech-process-text">
-                        <h4 id="tech-process-1-title">1. Raw Material Receiving & Classification</h4>
-                        <p id="tech-process-1-text">Incoming materials are received through enclosed feeding systems...</p>
+                        <span class="process-number">01</span>
+                        <h4 id="tech-process-1-title">Raw Material Receiving & Classification</h4>
+                        <p id="tech-process-1-text">Incoming materials are received through enclosed feeding systems, then screened and sorted to remove oversized impurities and recover primary iron components before entering the main treatment process.</p>
                     </div>
                 </div>
     
-                <div class="tech-process-card">
-                    <img src="./src/tech-process-2.jpg" alt="Multi-stage Crushing System">
+                <div class="tech-process-card system-step">
+                    <img src="./src/tech-process-2.jpg" alt="Multi-stage Crushing System" class="image-treatment-process">
                     <div class="tech-process-text">
-                        <h4 id="tech-process-2-title">2. Multi-stage Crushing System</h4>
+                        <span class="process-number">02</span>
+                        <h4 id="tech-process-2-title">Multi-stage Crushing System</h4>
                         <p id="tech-process-2-text">The slag is processed through primary and secondary crushing, followed by fine separation, allowing materials of different particle sizes to be prepared for efficient downstream recovery and purification.</p>
                     </div>
                 </div>
     
-                <div class="tech-process-card">
-                    <img src="./src/tech-process-3.jpg" alt="High-efficiency Metal Recovery">
+                <div class="tech-process-card system-step">
+                    <img src="./src/tech-process-3.jpg" alt="High-efficiency Metal Recovery" class="image-treatment-process">
                     <div class="tech-process-text">
-                        <h4 id="tech-process-3-title">3. High-efficiency Metal Recovery</h4>
+                        <span class="process-number">03</span>
+                        <h4 id="tech-process-3-title">High-efficiency Metal Recovery</h4>
                         <p id="tech-process-3-text">Magnetic separation is used to recover iron, while eddy current separation further extracts valuable non-ferrous metals such as copper and aluminum from the processed material stream.</p>
                     </div>
                 </div>
     
-                <div class="tech-process-card">
-                    <img src="./src/tech-process-4.jpg" alt="Wet Purification System">
+                <div class="tech-process-card system-step">
+                    <img src="./src/tech-process-4.jpg" alt="Wet Purification System" class="image-treatment-process">
                     <div class="tech-process-text">
-                        <h4 id="tech-process-4-title">4. Wet Purification System</h4>
+                        <span class="process-number">04</span>
+                        <h4 id="tech-process-4-title">Wet Purification System</h4>
                         <p id="tech-process-4-text">Gravity separation and dewatering treatment are applied to improve material cleanliness, while internal water circulation reduces wastewater discharge and supports stable environmental compliance.</p>
                     </div>
                 </div>
     
-                <div class="tech-process-card">
-                    <img src="./src/tech-process-5.jpg" alt="Recycled Material Production">
+                <div class="tech-process-card system-step">
+                    <img src="./src/tech-process-5.jpg" alt="Recycled Material Production" class="image-treatment-process">
                     <div class="tech-process-text">
-                        <h4 id="tech-process-5-title">5. Recycled Material Production</h4>
+                        <span class="process-number">05</span>
+                        <h4 id="tech-process-5-title">Recycled Material Production</h4>
                         <p id="tech-process-5-text">Purified materials are mixed, molded, cured, and standardized into recycled outputs suitable for construction, infrastructure, and other compliant resource-based applications.</p>
                     </div>
                 </div>
 
-                <div class="tech-process-card">
-                    <img src="./src/tech-process-6.jpg" alt="Fly Ash Stabilization and Leaching Control">
+                <div class="tech-process-card system-step">
+                    <img src="./src/tech-process-6.jpg" alt="Fly Ash Stabilization and Leaching Control" class="image-treatment-process">
                     <div class="tech-process-text">
-                        <h4 id="tech-process-6-title">6. Fly Ash Stabilization & Leaching Control</h4>
+                        <span class="process-number">06</span>
+                        <h4 id="tech-process-6-title">Fly Ash Stabilization & Leaching Control</h4>
                         <p id="tech-process-6-text">Fly ash treatment focuses on stabilization, detoxification, and leaching-risk control, helping reduce heavy-metal mobility and supporting compliant downstream disposal or utilization pathways.</p>
                     </div>
                 </div>
@@ -987,89 +1351,90 @@
         </div>
     </section>
 
-    <section class="product-gallery-section reveal">
+    <section class="product-gallery-section ds-section-tight grid-section reveal">
         <div class="content-container">
-            <div class="product-scroll" id="product-scroll">
-    
-                <div class="product-card">
-                    <img src="./src/products/20-70mm 砂.jpg" alt="20–70 mm Recycled Aggregate">
-                    <p id="product-1-name" class="product-name">20–70 MM AGGREGATE</p>
+            <div class="resource-output-layout">
+                <div>
+                    <p id="resource-output-label" class="ds-eyebrow mb-6">04 / Outputs</p>
+                    <div class="resource-output-list" role="tablist" aria-label="Resource output families">
+                        <button class="resource-output-item active" type="button" data-product-category="aggregates">
+                            <h3 id="resource-output-1-title">Recycled Aggregates</h3>
+                            <p id="resource-output-1-text">Representing the aggregate size outputs recovered from processed bottom ash.</p>
+                            <span id="resource-output-1-count" class="output-count">04 Outputs</span>
+                        </button>
+                        <button class="resource-output-item" type="button" data-product-category="paving">
+                            <h3 id="resource-output-2-title">Paving & Landscape Materials</h3>
+                            <p id="resource-output-2-text">Representing grass pavers, road paving bricks, and related municipal material applications.</p>
+                            <span id="resource-output-2-count" class="output-count">03 Outputs</span>
+                        </button>
+                        <button class="resource-output-item" type="button" data-product-category="building">
+                            <h3 id="resource-output-3-title">Concrete & Building Materials</h3>
+                            <p id="resource-output-3-text">Representing recycled concrete, lightweight wall panels, and compliant building material outputs.</p>
+                            <span id="resource-output-3-count" class="output-count">03 Outputs</span>
+                        </button>
+                    </div>
                 </div>
-    
-                <div class="product-card">
-                    <img src="./src/products/gt-70mm 砂.jpg" alt="Above 70 mm Recycled Aggregate">
-                    <p id="product-2-name" class="product-name">&gt;70 MM AGGREGATE</p>
+
+                <div class="product-explorer">
+                    <div class="product-feature">
+                        <img id="product-feature-image" src="./src/products/20-70mm 砂.jpg" alt="20-70 mm aggregate">
+                        <div class="product-feature-meta">
+                            <p id="product-feature-index" class="ds-metadata">01 / 04</p>
+                            <h3 id="product-feature-name">20-70 MM AGGREGATE</h3>
+                        </div>
+                    </div>
+                    <div class="product-controls" aria-label="Product navigation">
+                        <button type="button" id="product-prev" aria-label="Previous product">←</button>
+                        <button type="button" id="product-next" aria-label="Next product">→</button>
+                    </div>
+                    <p id="product-all-label" class="ds-metadata product-all-label">All Material Outputs / 10</p>
+                    <div id="product-thumb-rail" class="product-thumb-rail" aria-label="All material outputs"></div>
                 </div>
-    
-                <div class="product-card">
-                    <img src="./src/products/10-20mm 砂.jpg" alt="10–20 mm Recycled Aggregate">
-                    <p id="product-3-name" class="product-name">10–20 MM AGGREGATE</p>
+            </div>
+
+            <div class="product-mobile-rails">
+                <div class="product-mobile-group">
+                    <h3 id="mobile-output-1-title">Recycled Aggregates</h3>
+                    <div class="product-mobile-rail" data-mobile-category="aggregates"></div>
                 </div>
-    
-                <div class="product-card">
-                    <img src="./src/products/lt-10mm 砂.jpg" alt="Below 10 mm Recycled Aggregate">
-                    <p id="product-4-name" class="product-name">&lt;10 MM AGGREGATE</p>
+                <div class="product-mobile-group">
+                    <h3 id="mobile-output-2-title">Paving & Landscape Materials</h3>
+                    <div class="product-mobile-rail" data-mobile-category="paving"></div>
                 </div>
-    
-                <div class="product-card">
-                    <img src="./src/products/植草砖.jpg" alt="Grass Paver">
-                    <p id="product-5-name" class="product-name">GRASS PAVER</p>
+                <div class="product-mobile-group">
+                    <h3 id="mobile-output-3-title">Concrete & Building Materials</h3>
+                    <div class="product-mobile-rail" data-mobile-category="building"></div>
                 </div>
-    
-                <div class="product-card">
-                    <img src="./src/products/免烧砖.jpg" alt="Unfired Brick">
-                    <p id="product-6-name" class="product-name">UNFIRED BRICK</p>
-                </div>
-    
-                <div class="product-card">
-                    <img src="./src/products/道路砖.jpg" alt="Road Paving Brick">
-                    <p id="product-7-name" class="product-name">ROAD PAVING BRICK</p>
-                </div>
-    
-                <div class="product-card">
-                    <img src="./src/products/植生混凝土.jpg" alt="Vegetation Concrete">
-                    <p id="product-8-name" class="product-name">VEGETATION CONCRETE</p>
-                </div>
-    
-                <div class="product-card">
-                    <img src="./src/products/轻质墙板.jpg" alt="Lightweight Wall Panel">
-                    <p id="product-9-name" class="product-name">LIGHTWEIGHT WALL PANEL</p>
-                </div>
-    
-                <div class="product-card">
-                    <img src="./src/products/再生混凝土.jpg" alt="Recycled Concrete">
-                    <p id="product-10-name" class="product-name">RECYCLED CONCRETE</p>
-                </div>
-    
             </div>
         </div>
     </section>
 
-    <section id="innovation" class="pt-12 pb-32 bg-[#0a0a0a] reveal">
+    <section id="innovation" class="ds-section ds-section-muted grid-section reveal">
         <div class="content-container">
-            <div class="text-center mb-20">
+            <div class="ds-section-header editorial-section-header">
+                <p id="innovation-label" class="ds-eyebrow">05 / Intelligence</p>
                 <h2 id="innovation-heading" class="title-main">Innovation & Smart Operations</h2>
-                <p id="innovation-subtitle" class="max-w-3xl mx-auto mt-6 text-gray-400 text-sm md:text-base font-light leading-relaxed">
+                <p id="innovation-subtitle" class="ds-body mt-6">
                     We are developing AI-assisted technologies to improve recovery efficiency, equipment reliability, and long-term operational performance across solid-waste resource recovery facilities.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="innovation-card p-6 md:p-10">
-                    <img src="./src/innovation-metal-sorting.jpg" alt="AI-Enhanced Metal Sorting" class="innovation-img">
-                    <div class="pt-8">
-                        <h4 id="innovation-1-title" class="text-xl font-bold mb-4 uppercase text-white">AI-Enhanced Metal Sorting</h4>
-                        <p id="innovation-1-text" class="text-sm text-gray-400 leading-relaxed">
+            <div class="innovation-editorial">
+                <div class="innovation-feature">
+                    <img src="./src/innovation-metal-sorting.jpg" alt="AI-Enhanced Metal Sorting" class="innovation-img image-treatment-process image-ratio-wide">
+                    <div class="innovation-copy">
+                        <h4 id="innovation-1-title">AI-Enhanced Metal Sorting</h4>
+                        <p id="innovation-1-text">
                             Camera- and spectral-assisted recognition systems are being developed to identify copper, aluminum, stainless steel, and other valuable materials on conveyor lines, with the potential to link visual detection to air-jet or mechanical sorting modules for higher recovery precision.
                         </p>
                     </div>
                 </div>
 
-                <div class="innovation-card p-6 md:p-10">
-                    <img src="./src/innovation-maintenance.jpg" alt="Predictive Maintenance System" class="innovation-img">
-                    <div class="pt-8">
-                        <h4 id="innovation-2-title" class="text-xl font-bold mb-4 uppercase text-white">Predictive Maintenance System</h4>
-                        <p id="innovation-2-text" class="text-sm text-gray-400 leading-relaxed">
+                <div class="innovation-feature">
+                    <img src="./src/innovation-maintenance.jpg" alt="Predictive Maintenance System" class="innovation-img image-treatment-process image-ratio-wide">
+                    <div class="innovation-copy">
+                        <h4 id="innovation-2-title">Predictive Maintenance System</h4>
+                        <p id="innovation-2-text">
                             Predictive models based on vibration, temperature, current, and operating-load data are being explored for crushers, screens, conveyors, and other key equipment, helping reduce unplanned downtime and improve long-term operating stability.
                         </p>
                     </div>
@@ -1078,7 +1443,7 @@
         </div>
     </section>
 
-    <section id="timeline" class="milestone-section">
+    <section id="timeline" class="milestone-section image-story-section">
         <div class="milestone-slide active" style="background-image: url('./public/milestone-2022.jpg');">
             <div class="milestone-content">
                 <p class="milestone-year">2022</p>
@@ -1122,23 +1487,125 @@
         </div>
     </section>
 
-    <section id="projects" class="py-32 bg-[#0a0a0a] reveal">
+    <section id="scale" class="ds-section data-section reveal">
         <div class="content-container">
-            <h2 id="projects-heading" class="title-main mb-20 text-center">Global Footprint</h2>
+            <div class="ds-section-header editorial-section-header">
+                <p id="scale-label" class="ds-eyebrow mb-6">06 / Scale</p>
+                <h2 id="scale-heading" class="title-main">Built For Regional Deployment</h2>
+            </div>
+
+            <div class="scale-grid">
+                <div class="scale-item">
+                    <div class="scale-value"><span class="scale-number">2,600</span><span class="scale-unit">T/D</span></div>
+                    <div>
+                        <p id="scale-4-label" class="ds-metadata scale-label">Reference Project Capacity</p>
+                        <p id="scale-4-text" class="ds-caption mt-3">Largest displayed project capacity in the current portfolio.</p>
+                    </div>
+                </div>
+                <div class="scale-item">
+                    <div class="scale-value">3</div>
+                    <div>
+                        <p id="scale-1-label" class="ds-metadata scale-label">Markets / Countries</p>
+                        <p id="scale-1-text" class="ds-caption mt-3">China, Vietnam, and Thailand operating footprint.</p>
+                    </div>
+                </div>
+                <div class="scale-item">
+                    <div class="scale-value">18</div>
+                    <div>
+                        <p id="scale-3-label" class="ds-metadata scale-label">Total Projects</p>
+                        <p id="scale-3-text" class="ds-caption mt-3">Operating, completed, and developing projects across current markets.</p>
+                    </div>
+                </div>
+                <div class="scale-item scale-item-secondary">
+                    <div class="scale-value">4</div>
+                    <div>
+                        <p id="scale-2-label" class="ds-metadata scale-label">Flagship Projects</p>
+                        <p id="scale-2-text" class="ds-caption mt-3">Priority project references across Vietnam and Thailand.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="ds-section ds-section-muted data-section reveal">
+        <div class="content-container">
+            <div class="ds-section-header editorial-section-header">
+                <p id="flagship-label" class="ds-eyebrow">07 / Projects</p>
+                <h2 id="flagship-heading" class="title-main">Flagship Projects</h2>
+            </div>
+
+            <div class="project-showcase">
+                <div class="project-track project-system">
+                    <div class="project-card">
+                        <img src="./public/projects/project-1.jpg" alt="Tam Sinh Nghia Slag Project" class="image-treatment-monumental">
+                        <div class="project-info">
+                            <span class="project-number ds-metadata">PROJECT 01</span>
+                            <h4 id="showcase-1-title">TAM SINH NGHIA SLAG PROJECT</h4>
+                            <p class="project-meta">
+                                <span id="showcase-1-location">Ho Chi Minh City, Vietnam</span>
+                                <span id="showcase-1-scale">2600 tons/d</span>
+                                <span id="showcase-1-area">20 hectares</span>
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="project-card">
+                        <img src="./public/projects/project-2.jpg" alt="Viestar Lemna Slag Project" class="image-treatment-monumental">
+                        <div class="project-info">
+                            <span class="project-number ds-metadata">PROJECT 02</span>
+                            <h4 id="showcase-2-title">VIESTAR LEMNA SLAG PROJECT</h4>
+                            <p class="project-meta">
+                                <span id="showcase-2-location">Ho Chi Minh City, Vietnam</span>
+                                <span id="showcase-2-scale">2600 tons/d</span>
+                                <span id="showcase-2-area">30 hectares</span>
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="project-card">
+                        <img src="./public/projects/project-6.jpg" alt="Phuket Slag Project" class="image-treatment-monumental">
+                        <div class="project-info">
+                            <span class="project-number ds-metadata">PROJECT 03</span>
+                            <h4 id="showcase-3-title">PHUKET SLAG PROJECT</h4>
+                            <p class="project-meta">
+                                <span id="showcase-3-location">Phuket, Thailand</span>
+                                <span id="showcase-3-scale">1200 tons/d</span>
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="project-card">
+                        <img src="./public/projects/project-5.jpg" alt="Pathum Thani Slag Project" class="image-treatment-monumental">
+                        <div class="project-info">
+                            <span class="project-number ds-metadata">PROJECT 04</span>
+                            <h4 id="showcase-4-title">PATHUM THANI SLAG PROJECT</h4>
+                            <p class="project-meta">
+                                <span id="showcase-4-location">Bangkok, Thailand</span>
+                                <span id="showcase-4-scale">1000 tons/d</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-section-header editorial-section-header">
+                <p id="footprint-label" class="ds-eyebrow">07 / Projects</p>
+                <h2 id="projects-heading" class="title-main">Global Footprint</h2>
+            </div>
             <div class="footprint-grid text-left">
                 <div class="footprint-panel">
                     <div>
                         <span class="footprint-index">01</span>
-                        <h4 id="proj-1-title" class="text-2xl font-bold mb-5 uppercase">Vietnam</h4>
-                        <p id="project-1-description" class="text-gray-400 text-sm leading-relaxed">Supporting major municipal waste-to-energy facilities in Ho Chi Minh City.</p>
+                        <h4 id="proj-1-title" class="ds-subheading mb-5">Vietnam</h4>
+                        <p id="project-1-description" class="ds-card-text">Supporting major municipal waste-to-energy facilities in Ho Chi Minh City.</p>
                     </div>
                     <div class="flex flex-wrap"><span class="location-tag" data-city="hoChiMinhCity">Ho Chi Minh City</span></div>
                 </div>
                 <div class="footprint-panel">
                     <div>
                         <span class="footprint-index">02</span>
-                        <h4 id="proj-2-title" class="text-2xl font-bold mb-5 uppercase">Mainland China</h4>
-                        <p id="project-2-description" class="text-gray-400 text-sm leading-relaxed">Extensive operations across urban and regional waste streams.</p>
+                        <h4 id="proj-2-title" class="ds-subheading mb-5">Mainland China</h4>
+                        <p id="project-2-description" class="ds-card-text">Extensive operations across urban and regional waste streams.</p>
                     </div>
                     <div class="flex flex-wrap">
                         <span class="location-tag" data-city="shandong">Shandong</span>
@@ -1153,8 +1620,8 @@
                 <div class="footprint-panel">
                     <div>
                         <span class="footprint-index">03</span>
-                        <h4 id="proj-3-title" class="text-2xl font-bold mb-5 uppercase">Thailand</h4>
-                        <p id="project-3-description" class="text-gray-400 text-sm leading-relaxed">Supporting waste-to-energy and resource recovery projects serving world-class tourism destinations and major urban centers, helping transform municipal waste into reusable resources while advancing cleaner, more sustainable local development.</p>
+                        <h4 id="proj-3-title" class="ds-subheading mb-5">Thailand</h4>
+                        <p id="project-3-description" class="ds-card-text">Supporting waste-to-energy and resource recovery projects serving world-class tourism destinations and major urban centers, helping transform municipal waste into reusable resources while advancing cleaner, more sustainable local development.</p>
                     </div>
                     <div class="flex flex-wrap">
                         <span class="location-tag" data-city="phuket">Phuket</span>
@@ -1162,53 +1629,8 @@
                     </div>
                 </div>
             </div>
-        
-            <div class="project-showcase">
-                <div class="project-track">
-                    <div class="project-card">
-                        <img src="./public/projects/project-1.jpg" alt="Tam Sinh Nghia Slag Project">
-                        <div class="project-info">
-                            <h4 id="showcase-1-title">TAM SINH NGHIA SLAG PROJECT</h4>
-                            <p id="showcase-1-location"><strong>Ho Chi Minh City, Vietnam</strong></p>
-                            <p id="showcase-1-scale">2600 tons/d solid waste treatment</p>
-                            <p id="showcase-1-area">Cover 20 Hectares</p>
-                            <p id="showcase-1-phase">With Phase I covering 6 Hectares</p>
-                        </div>
-                    </div>
-            
-                    <div class="project-card">
-                        <img src="./public/projects/project-2.jpg" alt="Viestar Lemna Slag Project">
-                        <div class="project-info">
-                            <h4 id="showcase-2-title">VIESTAR LEMNA SLAG PROJECT</h4>
-                            <p id="showcase-2-location"><strong>Ho Chi Minh City, Vietnam</strong></p>
-                            <p id="showcase-2-scale">2600 tons/d solid waste treatment</p>
-                            <p id="showcase-2-area">Cover 30 Hectares</p>
-                        </div>
-                    </div>
-            
-                    <div class="project-card">
-                        <img src="./public/projects/project-6.jpg" alt="Phuket Slag Project">
-                        <div class="project-info">
-                            <h4 id="showcase-3-title">PHUKET SLAG PROJECT</h4>
-                            <p id="showcase-3-location"><strong>Phuket, Thailand</strong></p>
-                            <p id="showcase-3-scale">1200 tons/d solid waste treatment</p>
-                            <p id="showcase-3-area"></p>
-                        </div>
-                    </div>
-            
-                    <div class="project-card">
-                        <img src="./public/projects/project-5.jpg" alt="Pathum Thani Slag Project">
-                        <div class="project-info">
-                            <h4 id="showcase-4-title">PATHUM THANI SLAG PROJECT</h4>
-                            <p id="showcase-4-location"><strong>Bangkok, Thailand</strong></p>
-                            <p id="showcase-4-scale">1000 tons/d solid waste treatment</p>
-                            <p id="showcase-4-area"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            <h4 id="partners-heading" class="text-[10px] font-bold uppercase tracking-[0.5em] text-gray-600 mb-12 text-center">Strategic Partners</h4>
+            <div class="partners-section">
+            <h4 id="partners-heading" class="ds-eyebrow mb-12 text-center">Strategic Partners</h4>
             <div class="partners-grid">
 
                 <span>ENERGY ABSOLUTE</span>
@@ -1231,11 +1653,12 @@
                 <span>POWERCHINA</span>
             
             </div>
+            </div>
         </div>
     </section>
 
-    <footer class="py-12 bg-[#020a02] border-t border-white/5 text-center">
-        <div class="text-[10px] text-gray-800 uppercase tracking-widest">
+    <footer class="site-footer">
+        <div class="site-footer-text">
             &copy; 2026 BridgeLux. All rights reserved.
         </div>
     </footer>
@@ -1245,13 +1668,13 @@
         en: {
             navAbout: "About", navSolutions: "Solutions", navTech: "Technology", navInnovation: "Innovation", navProjects: "Projects",
             heroTitle: "Pioneering Circular Systems",
-            heroHeading: "Transforming Solid Waste <br><span class='text-green-500 mt-8'>into Sustainable Value</span>",
+            heroHeading: "Transforming Solid Waste <br><span class='hero-emphasis mt-8'>into Sustainable Value</span>",
             heroDescription: "Waste-to-energy slag treatment and resource recovery delivering compliant, scalable solutions across China and Southeast Asia.",
-            aboutTitle: "About Us",
+            aboutTitle: "01 / Company",
             aboutHeading: "Professional <br>Resource Recovery <br>Enterprise",
-            aboutText: "We are a professional environmental technology and circular-resource enterprise focused on the integrated treatment and resource recovery of post-incineration residues, including bottom ash, fly ash, industrial solid waste, and legacy waste streams. Our business spans project development, system design, facility construction, equipment integration, and long-term operation.",
-            aboutText2: "Our work is grounded in the core principles of reduction, harmless treatment, and resource utilization. Through proven engineering methods and continuously optimized process systems, we transform complex solid-waste residues into compliant recycled materials and industrial resources, while supporting fly ash stabilization, pollution control, wastewater management, and secondary pollution prevention.",
-            aboutText3: "With operating projects in multiple provinces in China, Vietnam, and Thailand, we have accumulated extensive experience in managing high-moisture, high-impurity, and multi-source waste streams. We position ourselves as a long-term infrastructure partner rather than a short-term service provider, focusing on stable operation, regulatory compliance, and sustainable value creation across Asia.",
+            aboutText: "We are a professional environmental technology and circular-resource enterprise focused on integrated treatment and resource recovery for post-incineration residues, including bottom ash, fly ash, industrial solid waste, and legacy waste streams. Through proven engineering methods and long-term operating practice, we transform complex solid-waste residues into compliant recycled materials and industrial resources.",
+            aboutText2: "With operations across China, Vietnam, and Thailand, BridgeLux has developed practical experience across diverse waste compositions, climates, and operating environments. We position ourselves as a long-term infrastructure partner, with an emphasis on stable operation, regulatory compliance, and sustainable resource recovery.",
+            aboutScope: "Project Development · System Design · Facility Construction · Equipment Integration · Long-term Operations",
 
             why1Title: "Redefine Environmental Efficiency",
             why1Text: "BridgeLux helps municipal solid waste incineration plants reduce bottom ash accumulation and landfill dependency by redefining how post-incineration residues are managed, enabling more efficient operations and stronger long-term sustainability.",
@@ -1263,6 +1686,7 @@
             why4Text: "BridgeLux moves beyond traditional waste management by building circular ecosystems where post-incineration residues are transformed into sustainable resources and waste becomes enduring value.",
 
             solutionsHeading: "Core Solutions",
+            solutionsLabel: "02 / Capabilities",
             solution1Title: "WTE Bottom Ash Resource Recovery",
             solution1Text: "Through multi-stage crushing, screening, magnetic separation, eddy current separation, and wet purification, incineration bottom ash is transformed into recycled aggregates and reusable materials.",
 
@@ -1280,8 +1704,10 @@
 
             solution6Title: "Resource-Based End Products",
             solution6Text: "Stable, quality-controlled recycled outputs for green building materials, road base layers, municipal infrastructure, and other compliant resource-based applications.",
+            supportingCapabilitiesLabel: "Supporting Capabilities",
             
             technologyHeading: "Technology & Process",
+            technologyLabel: "03 / Technology",
             tech1Title: "Pre-treatment",
             tech1Description: "Our technology framework is built around a modular, end-to-end processing system that covers pre-treatment, separation, purification, and product formation. Incineration slag first undergoes controlled aging and conditioning, followed by multi-level crushing and screening to achieve particle size differentiation.",
             tech2Title: "Advanced Separation",
@@ -1289,30 +1715,44 @@
             tech3Title: "Eco-Integration",
             tech3Description: "All facilities incorporate integrated environmental protection systems, including sealed conveyors, odor treatment units, and internal water recycling. Process designs are optimized for local conditions, such as high humidity, high organic content, or plateau climates, ensuring stable operation and compliance with applicable environmental regulations.",
             projectsHeading: "Global Footprint",
+            footprintLabel: "07 / Projects",
             proj1Title: "Vietnam",
             project1Description: "Supporting major municipal waste-to-energy facilities in Ho Chi Minh City by providing dedicated slag resource recovery lines, enabling the transition from simple disposal to systematic reuse.",
             proj2Title: "Mainland China",
             project2Description: "Extensive operations across urban and regional waste streams. We have accumulated deep experience in managing complex, high-moisture materials common in diverse climates from Jilin to Guangxi.",
             proj3Title: "Thailand",
             project3Description: "Supporting waste-to-energy and resource recovery projects serving world-class tourism destinations and major urban centers, helping transform municipal waste into reusable resources while advancing cleaner, more sustainable local development.",
+            flagshipHeading: "Flagship Projects",
+            flagshipLabel: "07 / Projects",
             partnersHeading: "Strategic Partners",
             navTimeline: "Milestones",
             navNews: "News",
             navNewsMobile: "News",
 
+            scaleLabel: "06 / Scale",
+            scaleHeading: "Built For Regional Deployment",
+            scale1Label: "Markets / Countries",
+            scale1Text: "China, Vietnam, and Thailand operating footprint.",
+            scale2Label: "Flagship Projects",
+            scale2Text: "Priority project references across Vietnam and Thailand.",
+            scale3Label: "Total Projects",
+            scale3Text: "Operating, completed, and developing projects across current markets.",
+            scale4Label: "Reference Project Capacity",
+            scale4Text: "Largest displayed project capacity in the current portfolio.",
+
             scrollText: "Scroll to explore",
 
-            techProcess1Title: "1. Raw Material Receiving & Classification",
+            techProcess1Title: "Raw Material Receiving & Classification",
             techProcess1Text: "Incoming materials are received through enclosed feeding systems, then screened and sorted to remove oversized impurities and recover primary iron components before entering the main treatment process.",
-            techProcess2Title: "2. Multi-stage Crushing System",
+            techProcess2Title: "Multi-stage Crushing System",
             techProcess2Text: "The slag is processed through primary and secondary crushing, followed by fine separation, allowing materials of different particle sizes to be prepared for efficient downstream recovery and purification.",
-            techProcess3Title: "3. High-efficiency Metal Recovery",
+            techProcess3Title: "High-efficiency Metal Recovery",
             techProcess3Text: "Magnetic separation is used to recover iron, while eddy current separation further extracts valuable non-ferrous metals such as copper and aluminum from the processed material stream.",
-            techProcess4Title: "4. Wet Purification System",
+            techProcess4Title: "Wet Purification System",
             techProcess4Text: "Gravity separation and dewatering treatment are applied to improve material cleanliness, while internal water circulation reduces wastewater discharge and supports stable environmental compliance.",
-            techProcess5Title: "5. Recycled Material Production",
+            techProcess5Title: "Recycled Material Production",
             techProcess5Text: "Purified materials are mixed, molded, cured, and standardized into recycled outputs suitable for construction, infrastructure, and other compliant resource-based applications.",
-            techProcess6Title: "6. Fly Ash Stabilization & Leaching Control",
+            techProcess6Title: "Fly Ash Stabilization & Leaching Control",
             techProcess6Text: "Fly ash treatment focuses on stabilization, detoxification, and leaching-risk control, helping reduce heavy-metal mobility and supporting compliant downstream disposal or utilization pathways.",
 
             product1Name: "20–70 MM AGGREGATE",
@@ -1326,7 +1766,23 @@
             product9Name: "LIGHTWEIGHT WALL PANEL",
             product10Name: "RECYCLED CONCRETE",
 
+            resourceOutputLabel: "04 / Outputs",
+            resourceOutput1Title: "Recycled Aggregates",
+            resourceOutput1Text: "Representing the aggregate size outputs recovered from processed bottom ash.",
+            resourceOutput1Count: "04 Outputs",
+            resourceOutput2Title: "Paving & Landscape Materials",
+            resourceOutput2Text: "Representing grass pavers, road paving bricks, and related municipal material applications.",
+            resourceOutput2Count: "03 Outputs",
+            resourceOutput3Title: "Concrete & Building Materials",
+            resourceOutput3Text: "Representing recycled concrete, lightweight wall panels, and compliant building material outputs.",
+            resourceOutput3Count: "03 Outputs",
+            mobileOutput1Title: "Recycled Aggregates",
+            mobileOutput2Title: "Paving & Landscape Materials",
+            mobileOutput3Title: "Concrete & Building Materials",
+            productAllLabel: "All Material Outputs / 10",
+
             innovationHeading: "Innovation & Smart Operations",
+            innovationLabel: "05 / Intelligence",
             innovationSubtitle: "We are developing AI-assisted technologies to improve recovery efficiency, equipment reliability, and long-term operational performance across solid-waste resource recovery facilities.",
             innovation1Title: "AI-Enhanced Metal Sorting",
             innovation1Text: "Camera- and spectral-assisted recognition systems are being developed to identify copper, aluminum, stainless steel, and other valuable materials on conveyor lines, with the potential to link visual detection to air-jet or mechanical sorting modules for higher recovery precision.",
@@ -1343,25 +1799,22 @@
             milestone4Text: "We are upgrading toward an international circular resource platform, expanding from bottom ash resource recovery into integrated post-incineration residue treatment, including fly ash stabilization and leaching-risk control.",
 
             showcase1Title: "TAM SINH NGHIA SLAG PROJECT",
-            showcase1Location: "<strong>Ho Chi Minh City, Vietnam</strong>",
-            showcase1Scale: "2600 tons/d solid waste treatment",
-            showcase1Area: "Cover 20 Hectares",
-            showcase1Phase: "With Phase I covering 6 Hectares",
+            showcase1Location: "Ho Chi Minh City, Vietnam",
+            showcase1Scale: "2600 tons/d",
+            showcase1Area: "20 hectares",
 
             showcase2Title: "VIESTAR LEMNA SLAG PROJECT",
-            showcase2Location: "<strong>Ho Chi Minh City, Vietnam</strong>",
-            showcase2Scale: "2600 tons/d solid waste treatment",
-            showcase2Area: "Cover 30 Hectares",
+            showcase2Location: "Ho Chi Minh City, Vietnam",
+            showcase2Scale: "2600 tons/d",
+            showcase2Area: "30 hectares",
 
             showcase3Title: "PHUKET SLAG PROJECT",
-            showcase3Location: "<strong>Phuket, Thailand</strong>",
-            showcase3Scale: "1200 tons/d solid waste treatment",
-            showcase3Area: "",
+            showcase3Location: "Phuket, Thailand",
+            showcase3Scale: "1200 tons/d",
 
             showcase4Title: "PATHUM THANI SLAG PROJECT",
-            showcase4Location: "<strong>Bangkok, Thailand</strong>",
-            showcase4Scale: "1000 tons/d solid waste treatment",
-            showcase4Area: "",
+            showcase4Location: "Bangkok, Thailand",
+            showcase4Scale: "1000 tons/d",
 
             locationTags: {
                 hoChiMinhCity: "Ho Chi Minh City", shandong: "Shandong", guizhou: "Guizhou", jilin: "Jilin",
@@ -1372,13 +1825,13 @@
         zh: {
             navAbout: "關於我們", navSolutions: "解決方案", navTech: "技術體系", navInnovation: "創新研發", navProjects: "項目實績",
             heroTitle: "引領循環系統創新",
-            heroHeading: "廢棄為源<br><span class='text-green-500 mt-8'>價值新生</span>",
+            heroHeading: "廢棄為源<br><span class='hero-emphasis mt-8'>價值新生</span>",
             heroDescription: "專注於垃圾焚燒發電爐渣處理與資源化回收，為中國及東南亞提供符合法規、具備可擴展性的整體解決方案。",
-            aboutTitle: "關於我們",
+            aboutTitle: "01 / 公司",
             aboutHeading: "專業資源化<br>回收企業",
-            aboutText: "我們是一家專業的環保科技與循環資源企業，專注於垃圾焚燒後端殘餘物的綜合處理與資源化回收，業務涵蓋爐渣、飛灰、工業固體廢棄物及存量廢棄物等多類廢物流。公司服務範圍包括項目開發、系統設計、設施建設、設備集成及長期運營管理。",
-            aboutText2: "我們的工作以「減量化、無害化、資源化」為核心原則，透過成熟可靠的工程技術與持續優化的工藝系統，將複雜固體廢棄物殘渣轉化為符合法規要求的再生材料與工業資源，同時支援飛灰穩定化、污染控制、廢水管理及二次污染防控。",
-            aboutText3: "目前，我們在中國多個省份、越南及泰國均有在營項目，累積了處理高含水率、高雜質及多來源廢物流的實踐經驗。我們將自身定位為長期的基礎設施合作夥伴，而非短期服務提供者，專注於亞洲市場中的穩定運營、合規管理與可持續價值創造。",
+            aboutText: "我們是一家專業的環保科技與循環資源企業，專注於垃圾焚燒後端殘餘物的綜合處理與資源化回收，涵蓋爐渣、飛灰、工業固體廢棄物及存量廢棄物等多類廢物流。透過成熟工程技術與長期運營實踐，我們將複雜固體廢棄物殘渣轉化為合規再生材料與工業資源。",
+            aboutText2: "目前，BridgeLux 在中國、越南及泰國均有運營佈局，並累積了應對不同廢棄物組成、氣候條件與運營環境的實踐經驗。我們將自身定位為長期基礎設施合作夥伴，重視穩定運營、合規管理與可持續資源化回收。",
+            aboutScope: "項目開發 · 系統設計 · 設施建設 · 設備集成 · 長期運營",
             
             why1Title: "重新定義環境效率",
             why1Text: "BridgeLux 協助生活垃圾焚燒發電廠降低爐渣堆積與填埋依賴，透過重新定義焚燒後端殘餘物的管理方式，實現更高效率且更具可持續性的長期運營。",
@@ -1393,6 +1846,7 @@
             why4Text: "BridgeLux 超越傳統廢棄物管理模式，構建循環生態系統，使焚燒後端殘餘物轉化為可持續資源，讓廢棄物成為持久價值。",
 
             solutionsHeading: "核心解決方案",
+            solutionsLabel: "02 / 能力",
             solution1Title: "垃圾焚燒爐渣資源化回收",
             solution1Text: "透過多階段破碎、篩分、磁選、渦電流分選及濕法淨化處理工藝，將垃圾焚燒爐渣轉化為再生骨材與可再利用材料。",
 
@@ -1410,8 +1864,10 @@
 
             solution6Title: "資源化終端產品",
             solution6Text: "產出品質穩定、性能可控的再生資源產品，可應用於綠色建築材料、道路基層、市政基礎設施及其他合規資源化場景。",
+            supportingCapabilitiesLabel: "支撐能力",
             
             technologyHeading: "技術體系與工藝流程",
+            technologyLabel: "03 / 技術",
             tech1Title: "前處理",
             tech1Description: "我們的技術體系建立於模組化、端到端的一體化處理架構之上，涵蓋前處理、分選、淨化及產品成型等完整流程。垃圾焚燒爐渣首先經過受控老化與調質處理，隨後透過多級破碎與篩分工序，實現不同粒徑的精細分級。",
             tech2Title: "高階分選",
@@ -1419,12 +1875,15 @@
             tech3Title: "生態整合",
             tech3Description: "所有設施均配置整合式環境保護系統，包括密閉式輸送設備、異味處理裝置及內循環用水系統。工藝設計充分考慮不同區域的實際條件，如高濕度、高有機物含量或高原氣候等因素，確保系統長期穩定運行，並全面符合相關環境法規與監管要求。",
             projectsHeading: "全球佈局",
+            footprintLabel: "07 / 項目",
             proj1Title: "越南",
             project1Description: "我們為胡志明市主要市政垃圾焚燒發電設施提供專用爐渣資源化處理產線，協助項目由單一處置模式升級為系統化、可持續的再利用體系，推動城市固體廢棄物管理向資源化轉型。",
             proj2Title: "中國大陸",
             project2Description: "我們在多個城市及區域性固體廢棄物流中開展長期運營，累積了豐富的實踐經驗，特別是在應對不同氣候條件下高含水率、成分複雜廢棄物方面，具備成熟且穩定的處理能力，覆蓋範圍自吉林至廣西。",
             proj3Title: "泰國",
             project3Description: "支持服務世界級旅遊目的地與主要城市中心的垃圾焚燒發電及資源化回收項目，協助將城市生活垃圾轉化為可再利用資源，並推動更清潔、更可持續的地方發展。",
+            flagshipHeading: "旗艦項目",
+            flagshipLabel: "07 / 項目",
             partnersHeading: "策略夥伴",
 
             scrollText: "向下探索更多",
@@ -1433,17 +1892,28 @@
             navNews: "新聞",
             navNewsMobile: "新聞",
 
-            techProcess1Title: "1. 原料接收與分類",
+            scaleLabel: "06 / 規模",
+            scaleHeading: "面向區域部署的工程能力",
+            scale1Label: "市場 / 國家",
+            scale1Text: "中國、越南及泰國的運營佈局。",
+            scale2Label: "旗艦項目",
+            scale2Text: "覆蓋越南與泰國的重點項目案例。",
+            scale3Label: "項目總數",
+            scale3Text: "覆蓋當前市場的在營、已完成及開發中項目。",
+            scale4Label: "參考項目處理能力",
+            scale4Text: "目前展示項目中的最高單項處理能力。",
+
+            techProcess1Title: "原料接收與分類",
             techProcess1Text: "進廠物料首先經由封閉式進料系統接收，並透過篩分與分選去除大尺寸雜質，同時回收初級鐵質成分，為後續主體處理流程奠定基礎。",
-            techProcess2Title: "2. 多階段破碎系統",
+            techProcess2Title: "多階段破碎系統",
             techProcess2Text: "爐渣經由一級與二級破碎處理，並配合精細分選，使不同粒徑的物料能夠進入對應的後端回收與淨化流程。",
-            techProcess3Title: "3. 高效金屬回收",
+            techProcess3Title: "高效金屬回收",
             techProcess3Text: "系統透過磁選回收鐵金屬，並進一步使用渦電流分選技術，從處理後的物料流中提取銅、鋁等具價值的有色金屬。",
-            techProcess4Title: "4. 濕法淨化系統",
+            techProcess4Title: "濕法淨化系統",
             techProcess4Text: "透過重力分選與脫水處理，系統能有效提升物料潔淨度；同時，內部循環水系統可減少廢水外排，支援長期穩定的環保合規運行。",
-            techProcess5Title: "5. 再生材料製備",
+            techProcess5Title: "再生材料製備",
             techProcess5Text: "經淨化後的物料將進一步進行混合、成型、養護與標準化處理，形成可用於建築、市政基礎設施及其他合規場景的再生資源產品。",
-            techProcess6Title: "6. 飛灰穩定化與浸出控制",
+            techProcess6Title: "飛灰穩定化與浸出控制",
             techProcess6Text: "飛灰處理重點包括穩定化、無害化及浸出風險控制，以降低重金屬遷移風險，並銜接合規的後端處置或資源化利用路徑。",
 
             product1Name: "20–70 MM 再生骨材",
@@ -1457,7 +1927,23 @@
             product9Name: "輕質牆板",
             product10Name: "再生混凝土",
 
+            resourceOutputLabel: "04 / 產出",
+            resourceOutput1Title: "再生骨材",
+            resourceOutput1Text: "代表經處理爐渣回收形成的不同粒徑骨材產品。",
+            resourceOutput1Count: "04 項產出",
+            resourceOutput2Title: "鋪裝與景觀材料",
+            resourceOutput2Text: "代表植草磚、道路磚及相關市政材料應用。",
+            resourceOutput2Count: "03 項產出",
+            resourceOutput3Title: "混凝土與建築材料",
+            resourceOutput3Text: "代表再生混凝土、輕質牆板及其他合規建材產品。",
+            resourceOutput3Count: "03 項產出",
+            mobileOutput1Title: "再生骨材",
+            mobileOutput2Title: "鋪裝與景觀材料",
+            mobileOutput3Title: "混凝土與建築材料",
+            productAllLabel: "全部材料產出 / 10",
+
             innovationHeading: "創新研發與智慧運營",
+            innovationLabel: "05 / 智慧運營",
             innovationSubtitle: "我們正研發 AI 輔助技術，以提升固體廢棄物資源化設施的回收效率、設備可靠性與長期運營表現。",
             innovation1Title: "AI 增強金屬分選",
             innovation1Text: "我們正研發結合相機與光譜識別的金屬分選系統，用於在輸送線上識別銅、鋁、不鏽鋼及其他高價值物料，並進一步聯動噴氣或機械分揀模組，以提升回收精度並減少物料流失。",
@@ -1474,25 +1960,22 @@
             milestone4Text: "依託工程能力與區域運營經驗，我們正逐步升級為面向國際市場的循環資源平台，並由爐渣資源化回收拓展至焚燒後端殘餘物綜合治理，包括飛灰穩定化與浸出風險控制。",
 
             showcase1Title: "心生義爐渣資源化項目",
-            showcase1Location: "<strong>越南 胡志明市</strong>",
-            showcase1Scale: "2600 噸/日 固體廢棄物處理能力",
-            showcase1Area: "佔地 20 公頃",
-            showcase1Phase: "一期佔地 6 公頃",
+            showcase1Location: "越南 胡志明市",
+            showcase1Scale: "2600 噸/日",
+            showcase1Area: "20 公頃",
 
             showcase2Title: "越南之星爐渣資源化項目",
-            showcase2Location: "<strong>越南 胡志明市</strong>",
-            showcase2Scale: "2600 噸/日 固體廢棄物處理能力",
-            showcase2Area: "佔地 30 公頃",
+            showcase2Location: "越南 胡志明市",
+            showcase2Scale: "2600 噸/日",
+            showcase2Area: "30 公頃",
 
             showcase3Title: "普吉島爐渣資源化項目",
-            showcase3Location: "<strong>泰國 普吉島</strong>",
-            showcase3Scale: "1200 噸/日 固體廢棄物處理能力",
-            showcase3Area: "",
+            showcase3Location: "泰國 普吉島",
+            showcase3Scale: "1200 噸/日",
 
             showcase4Title: "巴吞他尼爐渣資源化項目",
-            showcase4Location: "<strong>泰國 曼谷</strong>",
-            showcase4Scale: "1000 噸/日 固體廢棄物處理能力",
-            showcase4Area: "",
+            showcase4Location: "泰國 曼谷",
+            showcase4Scale: "1000 噸/日",
 
             locationTags: {
                 hoChiMinhCity: "胡志明市", shandong: "山東", guizhou: "貴州", jilin: "吉林",
@@ -1502,7 +1985,118 @@
         }
     };
 
-    let currentLang = 'zh'; 
+    const productCatalog = {
+        en: {
+            aggregates: [
+                { name: "20-70 MM AGGREGATE", image: "./src/products/20-70mm 砂.jpg" },
+                { name: ">70 MM AGGREGATE", image: "./src/products/gt-70mm 砂.jpg" },
+                { name: "10-20 MM AGGREGATE", image: "./src/products/10-20mm 砂.jpg" },
+                { name: "<10 MM AGGREGATE", image: "./src/products/lt-10mm 砂.jpg" }
+            ],
+            paving: [
+                { name: "GRASS PAVER", image: "./src/products/植草砖.jpg" },
+                { name: "UNFIRED BRICK", image: "./src/products/免烧砖.jpg" },
+                { name: "ROAD PAVING BRICK", image: "./src/products/道路砖.jpg" }
+            ],
+            building: [
+                { name: "VEGETATION CONCRETE", image: "./src/products/植生混凝土.jpg" },
+                { name: "LIGHTWEIGHT WALL PANEL", image: "./src/products/轻质墙板.jpg" },
+                { name: "RECYCLED CONCRETE", image: "./src/products/再生混凝土.jpg" }
+            ]
+        },
+        zh: {
+            aggregates: [
+                { name: "20-70 MM 再生骨材", image: "./src/products/20-70mm 砂.jpg" },
+                { name: ">70 MM 再生骨材", image: "./src/products/gt-70mm 砂.jpg" },
+                { name: "10-20 MM 再生骨材", image: "./src/products/10-20mm 砂.jpg" },
+                { name: "<10 MM 再生骨材", image: "./src/products/lt-10mm 砂.jpg" }
+            ],
+            paving: [
+                { name: "植草磚", image: "./src/products/植草砖.jpg" },
+                { name: "免燒磚", image: "./src/products/免烧砖.jpg" },
+                { name: "道路磚", image: "./src/products/道路砖.jpg" }
+            ],
+            building: [
+                { name: "植生混凝土", image: "./src/products/植生混凝土.jpg" },
+                { name: "輕質牆板", image: "./src/products/轻质墙板.jpg" },
+                { name: "再生混凝土", image: "./src/products/再生混凝土.jpg" }
+            ]
+        }
+    };
+
+    let currentLang = 'zh';
+    let activeProductIndex = 0;
+
+    const productCategoryOrder = ['aggregates', 'paving', 'building'];
+    const productCategoryStarts = { aggregates: 0, paving: 4, building: 7 };
+    const productCategoryRanges = { aggregates: [0, 3], paving: [4, 6], building: [7, 9] };
+
+    function getAllProducts() {
+        return productCategoryOrder.flatMap(category =>
+            (productCatalog[currentLang][category] || []).map(product => ({ ...product, category }))
+        );
+    }
+
+    function getActiveProductCategory() {
+        return Object.entries(productCategoryRanges).find(([, range]) =>
+            activeProductIndex >= range[0] && activeProductIndex <= range[1]
+        )?.[0] || 'aggregates';
+    }
+
+    function scrollActiveProductIntoView(behavior = 'smooth') {
+        const thumbRail = document.getElementById('product-thumb-rail');
+        const activeThumb = thumbRail?.querySelector('[data-product-index="' + activeProductIndex + '"]');
+        if (!thumbRail || !activeThumb) return;
+
+        const railRect = thumbRail.getBoundingClientRect();
+        const thumbRect = activeThumb.getBoundingClientRect();
+        const targetLeft = thumbRail.scrollLeft + thumbRect.left - railRect.left;
+        thumbRail.scrollTo({ left: targetLeft, behavior });
+    }
+
+    function renderProducts(options = {}) {
+        const products = getAllProducts();
+        activeProductIndex = Math.max(0, Math.min(activeProductIndex, products.length - 1));
+        const activeProduct = products[activeProductIndex] || products[0];
+        const activeProductCategory = getActiveProductCategory();
+        const featureImage = document.getElementById('product-feature-image');
+        const featureName = document.getElementById('product-feature-name');
+        const featureIndex = document.getElementById('product-feature-index');
+        const thumbRail = document.getElementById('product-thumb-rail');
+
+        if (featureImage && activeProduct) {
+            featureImage.src = activeProduct.image;
+            featureImage.alt = activeProduct.name;
+        }
+        if (featureName && activeProduct) featureName.textContent = activeProduct.name;
+        if (featureIndex) featureIndex.textContent = String(activeProductIndex + 1).padStart(2, '0') + ' / ' + String(products.length).padStart(2, '0');
+
+        document.querySelectorAll('[data-product-category]').forEach(button => {
+            button.classList.toggle('active', button.dataset.productCategory === activeProductCategory);
+        });
+
+        if (thumbRail) {
+            thumbRail.innerHTML = products.map((product, index) => `
+                <button type="button" class="product-thumb ${index === activeProductIndex ? 'active' : ''}" data-product-index="${index}">
+                    <img src="${product.image}" alt="${product.name}">
+                    <span>${String(index + 1).padStart(2, '0')} / ${product.name}</span>
+                </button>
+            `).join('');
+            if (options.scrollActive) scrollActiveProductIntoView(options.scrollBehavior || 'smooth');
+        }
+
+        document.querySelectorAll('.product-mobile-rail').forEach(rail => {
+            const category = rail.dataset.mobileCategory;
+            const categoryProducts = productCatalog[currentLang][category] || [];
+            const categoryStart = productCategoryStarts[category] || 0;
+            rail.innerHTML = categoryProducts.map((product, index) => `
+                <div class="product-mobile-card">
+                    <img src="${product.image}" alt="${product.name}">
+                    <span>${String(categoryStart + index + 1).padStart(2, '0')} / ${product.name}</span>
+                </div>
+            `).join('');
+        });
+    }
 
     function switchLanguage() {
         currentLang = currentLang === 'en' ? 'zh' : 'en';
@@ -1510,20 +2104,21 @@
         const ids = [
             'nav-about', 'nav-solutions', 'nav-tech', 'nav-innovation', 'nav-timeline', 'nav-projects', 'nav-news', 'nav-news-mobile',
             'hero-title', 'hero-heading', 'hero-description',
-            'about-title', 'about-heading', 'about-text', 'about-text-2','about-text-3',
+            'about-title', 'about-heading', 'about-text', 'about-text-2', 'about-scope',
             
             'why-1-title', 'why-1-text',
             'why-2-title', 'why-2-text',
             'why-3-title', 'why-3-text',
             'why-4-title', 'why-4-text',
 
-            'solutions-heading', 'solution-1-title', 'solution-1-text',
+            'solutions-label', 'solutions-heading', 'solution-1-title', 'solution-1-text',
             'solution-2-title', 'solution-2-text',
             'solution-3-title', 'solution-3-text',
             'solution-4-title', 'solution-4-text',
             'solution-5-title', 'solution-5-text',
-            'solution-6-title', 'solution-6-text',
+            'solution-6-title', 'solution-6-text', 'supporting-capabilities-label',
 
+            'technology-label',
             'tech-process-1-title', 'tech-process-1-text',
             'tech-process-2-title', 'tech-process-2-text',
             'tech-process-3-title', 'tech-process-3-text',
@@ -1531,15 +2126,21 @@
             'tech-process-5-title', 'tech-process-5-text',
             'tech-process-6-title', 'tech-process-6-text',
 
-            'product-1-name', 'product-2-name',
-            'product-3-name', 'product-4-name',
-            'product-5-name', 'product-6-name',
-            'product-7-name', 'product-8-name',
-            'product-9-name', 'product-10-name',
+            'resource-output-label',
+            'resource-output-1-title', 'resource-output-1-text', 'resource-output-1-count',
+            'resource-output-2-title', 'resource-output-2-text', 'resource-output-2-count',
+            'resource-output-3-title', 'resource-output-3-text', 'resource-output-3-count',
+            'mobile-output-1-title', 'mobile-output-2-title', 'mobile-output-3-title', 'product-all-label',
 
-            'innovation-heading', 'innovation-subtitle',
+            'innovation-label', 'innovation-heading', 'innovation-subtitle',
             'innovation-1-title', 'innovation-1-text',
             'innovation-2-title', 'innovation-2-text',
+
+            'scale-label', 'scale-heading',
+            'scale-1-label', 'scale-1-text',
+            'scale-2-label', 'scale-2-text',
+            'scale-3-label', 'scale-3-text',
+            'scale-4-label', 'scale-4-text',
 
             'milestone-1-title', 'milestone-1-text',
             'milestone-2-title', 'milestone-2-text',
@@ -1547,14 +2148,14 @@
             'milestone-4-title', 'milestone-4-text',
             
             
-            'projects-heading', 'proj-1-title', 'project-1-description',
+            'flagship-label', 'flagship-heading', 'footprint-label', 'projects-heading', 'proj-1-title', 'project-1-description',
             'proj-2-title', 'project-2-description',
             'proj-3-title', 'project-3-description',
 
-            'showcase-1-title', 'showcase-1-location', 'showcase-1-scale', 'showcase-1-area', 'showcase-1-phase',
+            'showcase-1-title', 'showcase-1-location', 'showcase-1-scale', 'showcase-1-area',
             'showcase-2-title', 'showcase-2-location', 'showcase-2-scale', 'showcase-2-area',
-            'showcase-3-title', 'showcase-3-location', 'showcase-3-scale', 'showcase-3-area',
-            'showcase-4-title', 'showcase-4-location', 'showcase-4-scale', 'showcase-4-area',
+            'showcase-3-title', 'showcase-3-location', 'showcase-3-scale',
+            'showcase-4-title', 'showcase-4-location', 'showcase-4-scale',
 
             'partners-heading'
         ];
@@ -1576,10 +2177,33 @@
 
         document.getElementById("scroll-text").innerHTML = langData[currentLang].scrollText;
         document.getElementById("toggle-lang").textContent = currentLang === 'en' ? '繁體中文' : 'English';
+        renderProducts();
         document.body.style.opacity = '1';
     }
 
     document.getElementById("toggle-lang").addEventListener("click", switchLanguage);
+    document.querySelectorAll('[data-product-category]').forEach(button => {
+        button.addEventListener('click', () => {
+            activeProductIndex = productCategoryStarts[button.dataset.productCategory] || 0;
+            renderProducts({ scrollActive: true });
+        });
+    });
+    document.getElementById('product-prev').addEventListener('click', () => {
+        const products = getAllProducts();
+        activeProductIndex = (activeProductIndex - 1 + products.length) % products.length;
+        renderProducts({ scrollActive: true });
+    });
+    document.getElementById('product-next').addEventListener('click', () => {
+        const products = getAllProducts();
+        activeProductIndex = (activeProductIndex + 1) % products.length;
+        renderProducts({ scrollActive: true });
+    });
+    document.getElementById('product-thumb-rail').addEventListener('click', (event) => {
+        const thumb = event.target.closest('[data-product-index]');
+        if (!thumb) return;
+        activeProductIndex = Number(thumb.dataset.productIndex);
+        renderProducts({ scrollActive: true, scrollBehavior: 'auto' });
+    });
     window.addEventListener('DOMContentLoaded', switchLanguage);
 
     let milestoneIndex = 0;
@@ -1619,40 +2243,6 @@ const revealObserver = new IntersectionObserver((entries) => {
 revealItems.forEach(item => {
     revealObserver.observe(item);
 });
-
-    (function () {
-        const slider = document.getElementById('product-scroll');
-        if (!slider) return;
-
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true;
-            slider.classList.add('dragging');
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-        });
-
-        slider.addEventListener('mouseleave', () => {
-            isDown = false;
-            slider.classList.remove('dragging');
-        });
-
-        slider.addEventListener('mouseup', () => {
-            isDown = false;
-            slider.classList.remove('dragging');
-        });
-
-        slider.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 1.2;
-            slider.scrollLeft = scrollLeft - walk;
-        });
-    })();
 </script>
 
 </body>
